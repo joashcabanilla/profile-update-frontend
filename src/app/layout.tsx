@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 
 //CSS and fonts
 import "./globals.css";
-import { oswald, inter } from "@/assets/fonts/fonts";
-
+import { poppins, jetbrains, inter } from "@/assets/fonts/fonts";
 
 export const metadata: Metadata = {
     title: "NOVADECI | Profile Update",
@@ -16,7 +15,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${inter.variable} ${oswald.variable} ${inter.className}`}>
+        <html
+            lang="en"
+            className={`${inter.variable} ${jetbrains.variable} ${poppins.variable} ${inter.className}`}
+        >
             <body>{children}</body>
         </html>
     );
