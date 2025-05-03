@@ -15,6 +15,7 @@ import {
 
 export default function Terms() {
     const [dialogOpen, setDialogOpen] = useState<boolean>(true);
+
     const defaultTextProps: object = {
         font: "mono",
         align: "left",
@@ -22,14 +23,18 @@ export default function Terms() {
         weight: "sm"
     };
 
+    const dialogEventHandler = (e: Event) => {
+        e.preventDefault();
+    };
+
     return (
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogContent
                 hideCloseIcon={true}
                 className="bg-card flex flex-col gap-0 p-0 sm:max-h-[min(640px,80vh)] sm:max-w-lg [&>button:last-child]:top-3.5"
-                onInteractOutside={(e) => e.preventDefault()}
-                onEscapeKeyDown={(e) => e.preventDefault()}
-                onOpenAutoFocus={(e) => e.preventDefault()}
+                onInteractOutside={dialogEventHandler}
+                onEscapeKeyDown={dialogEventHandler}
+                onOpenAutoFocus={dialogEventHandler}
             >
                 <DialogHeader className="contents space-y-0 text-left">
                     <DialogTitle className="font-jetbrains text-foreground border-b px-6 py-4 text-base">
@@ -100,7 +105,11 @@ export default function Terms() {
                         Read all terms before accepting.
                     </span>
                     <DialogClose asChild>
-                        <Button type="button" size={"lg"} className="font-jetbrains font-extrabold">
+                        <Button
+                            type="button"
+                            size={"lg"}
+                            className="font-jetbrains font-extrabold"
+                        >
                             I agree
                         </Button>
                     </DialogClose>

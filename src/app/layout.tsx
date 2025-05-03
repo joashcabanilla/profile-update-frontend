@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 //CSS and fonts
 import "./globals.css";
@@ -18,8 +19,18 @@ export default function RootLayout({
         <html
             lang="en"
             className={`${inter.variable} ${jetbrains.variable} ${poppins.variable} ${inter.className}`}
+            suppressHydrationWarning
         >
-            <body>{children}</body>
+            <body>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
