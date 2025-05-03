@@ -11,7 +11,7 @@ export const card = tv({
             center: "mx-auto mt-6 mb-6"
         },
         size: {
-            default: "max-w-[650px]"
+            maxWidth650px: "max-w-[650px]"
         }
     }
 });

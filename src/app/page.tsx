@@ -3,25 +3,33 @@ import { container, card, text } from "@/lib/variants";
 import Image from "next/image";
 import Logo from "@/assets/images/logo1.png";
 
+//components
+import Terms from "@/components/home/Terms";
+import SwitchTheme from "@/components/home/SwitchTheme";
+
 export default function Home() {
     return (
         <div className={container()}>
+            <Terms />
             <div
                 className={cn(
-                    card({ align: "center", size: "default" }),
+                    card({ align: "center", size: "maxWidth650px" }),
                     "grid gap-6"
                 )}
             >
-                <div className="grid gap-2">
-                    <div className="flex items-center justify-center sm:justify-start">
+                <div className="grid gap-4">
+                    <div className="flex w-full items-center justify-between">
                         <Image
                             src={Logo}
                             alt="Logo"
                             placeholder="blur"
                             draggable={false}
                             priority
-                            className="w-full max-w-[300px]"
+                            className="w-9/12 max-w-[300px]"
                         />
+                        <div className="flex items-center">
+                            <SwitchTheme />
+                        </div>
                     </div>
                     <h1
                         className={text({
@@ -33,60 +41,11 @@ export default function Home() {
                     >
                         Update Member Profile
                     </h1>
-                    <div className="border-accent rounded-lg border-2 border-dashed">
-                        <p
-                            className={text({
-                                font: "mono",
-                                align: "left",
-                                size: "md",
-                                weight: "sm"
-                            })}
-                        >
-                            note or tips para saan yung website data privacy
-                        </p>
-                    </div>
                 </div>
                 <div className="border-2">stepper design</div>
                 <div className="border-2">
                     step container / child components
                 </div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-                <div className="border-2">buttons prev and next</div>
-
-                <div className="border-2">buttons prev and next</div>
                 <div className="border-2">buttons prev and next</div>
             </div>
         </div>
