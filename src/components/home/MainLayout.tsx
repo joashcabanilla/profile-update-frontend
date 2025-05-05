@@ -8,6 +8,7 @@ import Logo from "@/assets/images/logo1.png";
 //components
 import Terms from "@/components/home/Terms";
 import SwitchTheme from "@/components/home/SwitchTheme";
+import Steps from "@/components/home/Steps";
 
 export default function MainLayout() {
     return (
@@ -43,7 +44,7 @@ export default function MainLayout() {
                         Update Member Profile
                     </h1>
                 </div>
-                <div className="border-2">stepper design</div>
+                <Steps />
                 <div className="border-2">
                     step container / child components
                 </div>
