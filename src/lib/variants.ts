@@ -33,11 +33,11 @@ export const text = tv({
             sm: "font-normal",
             md: "font-bold",
             lg: "font-extrabold",
-            xl:"font-black"
+            xl: "font-black"
         },
-        font:{
-            mono:"font-jetbrains",
-            title:"font-poppins"
+        font: {
+            mono: "font-jetbrains",
+            title: "font-poppins"
         }
     },
     defaultVariants: {

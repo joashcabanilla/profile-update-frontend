@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ThemeContextProvider from "@/context/theme-context";
 
 //CSS and fonts
 import "./globals.css";
@@ -28,7 +29,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    {children}
+                    <ThemeContextProvider>{children}</ThemeContextProvider>
                 </ThemeProvider>
             </body>
         </html>
