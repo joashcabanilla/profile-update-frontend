@@ -5,7 +5,7 @@ export const container = tv({
 });
 
 export const card = tv({
-    base: "bg-card text-card-foreground rounded-2xl border p-4 shadow sm:p-6",
+    base: "bg-card text-card-foreground rounded-2xl border p-4 shadow-2xl sm:p-6",
     variants: {
         align: {
             center: "mx-auto mt-6 mb-6"

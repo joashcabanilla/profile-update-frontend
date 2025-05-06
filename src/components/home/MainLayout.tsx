@@ -9,6 +9,7 @@ import Logo from "@/assets/images/logo1.png";
 import Terms from "@/components/home/Terms";
 import SwitchTheme from "@/components/home/SwitchTheme";
 import Steps from "@/components/home/Steps";
+import SearchAccount from "@/components/home/SearchAccount";
 
 export default function MainLayout() {
     return (
@@ -17,7 +18,7 @@ export default function MainLayout() {
             <div
                 className={cn(
                     card({ align: "center", size: "maxWidth650px" }),
-                    "grid gap-6"
+                    "grid gap-10"
                 )}
             >
                 <div className="grid gap-4">
@@ -45,10 +46,7 @@ export default function MainLayout() {
                     </h1>
                 </div>
                 <Steps />
-                <div className="border-2">
-                    step container / child components
-                </div>
-                <div className="border-2">buttons prev and next</div>
+                <SearchAccount />
             </div>
         </div>
     );

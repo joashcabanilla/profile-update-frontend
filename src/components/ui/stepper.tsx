@@ -244,7 +244,7 @@ function StepperTitle({
     return (
         <h3
             data-slot="stepper-title"
-            className={cn("text-sm font-medium", className)}
+            className={cn("text-md font-medium", className)}
             {...props}
         />
     );
