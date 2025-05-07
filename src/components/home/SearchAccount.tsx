@@ -1,10 +1,15 @@
 import { cn } from "@/lib/utils";
-import { text } from "@/lib/variants";
-import { useId } from "react";
+import { text, card } from "@/lib/variants";
+import { useId, useState } from "react";
+import { CircleX, SearchIcon } from "lucide-react";
+
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function SearchAccount() {
     const id = useId();
+    const [searchInput, setSearchInput] = useState<string>("");
+
     return (
         <div className="grid gap-6">
             <div
@@ -33,13 +38,13 @@ export default function SearchAccount() {
                 </p>
             </div>
 
-            <div className="grid gap-3">
+            <div className="grid gap-2">
                 <h1
                     className={cn(
                         text({
                             font: "title",
                             align: "left",
-                            size: "md",
+                            size: "lg",
                             weight: "md"
                         })
                     )}
@@ -47,17 +52,54 @@ export default function SearchAccount() {
                     Find your account
                 </h1>
                 <div className="grid gap-2">
-                    <div className="group relative">
-                        <label
-                            htmlFor={id}
-                            className="origin-start text-muted-foreground/70 group-focus-within:text-foreground has-[+input:not(:placeholder-shown)]:text-foreground absolute top-1/2 block -translate-y-1/2 cursor-text px-1 text-sm transition-all group-focus-within:pointer-events-none group-focus-within:top-0 group-focus-within:cursor-default group-focus-within:text-xs group-focus-within:font-normal has-[+input:not(:placeholder-shown)]:pointer-events-none has-[+input:not(:placeholder-shown)]:top-0 has-[+input:not(:placeholder-shown)]:cursor-default has-[+input:not(:placeholder-shown)]:text-xs has-[+input:not(:placeholder-shown)]:font-medium"
-                        >
-                            <span className="inline-flex px-2 bg-card text-base">
-                                Enter PB number or Member Id
-                            </span>
-                        </label>
-                        <Input id={id} type="email" placeholder=" "  className="h-13 text-xl text-foreground font-extrabold"/>
+                    <div className="*:not-first:mt-2">
+                        <div className="relative">
+                            <Input
+                                id={id}
+                                className="peer text-foreground h-12 rounded-xl border-2 ps-9 pe-9 indent-2 text-sm font-extrabold placeholder:font-normal sm:text-lg"
+                                placeholder="Enter PB# or Member ID"
+                                type="search"
+                                value={searchInput}
+                                onInput={(
+                                    e: React.ChangeEvent<HTMLInputElement>
+                                ) => {
+                                    setSearchInput(e.currentTarget.value);
+                                }}
+                            />
+                            <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">
+                                <SearchIcon size={25} />
+                            </div>
+                            <button
+                                className={cn(
+                                    "text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 transition-[color,box-shadow, opacity] absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md delay-100 ease-[cubic-bezier(0.42,0,1,1)] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+                                    searchInput
+                                        ? "cursor-pointer opacity-100"
+                                        : "pointer-events-none opacity-0"
+                                )}
+                                aria-label="Submit search"
+                                type="submit"
+                                onClick={() => {
+                                    setSearchInput("");
+                                }}
+                            >
+                                <CircleX size={20} aria-hidden="true" />
+                            </button>
+                        </div>
                     </div>
+                    <ScrollArea
+                        type="always"
+                        className="h-50 w-full rounded-lg border-2 shadow"
+                    >
+                        <div className="grid gap-4 p-2 sm:p-4">
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                        </div>
+                    </ScrollArea>
                 </div>
             </div>
         </div>

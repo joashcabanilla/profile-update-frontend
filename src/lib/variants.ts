@@ -5,13 +5,15 @@ export const container = tv({
 });
 
 export const card = tv({
-    base: "bg-card text-card-foreground rounded-2xl border p-4 shadow-2xl sm:p-6",
+    base: "bg-card text-card-foreground",
     variants: {
         align: {
             center: "mx-auto mt-6 mb-6"
         },
-        size: {
-            maxWidth650px: "max-w-[650px]"
+        variant: {
+            maxWidth650px:
+                "max-w-[650px] rounded-2xl border p-4 shadow-2xl sm:p-6",
+            searchAccount: "w-full rounded-lg border p-2 shadow-none bg-accent text-accent-foreground text-lg font-bold"
         }
     }
 });

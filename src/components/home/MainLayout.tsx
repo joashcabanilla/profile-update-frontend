@@ -17,7 +17,7 @@ export default function MainLayout() {
             <Terms />
             <div
                 className={cn(
-                    card({ align: "center", size: "maxWidth650px" }),
+                    card({ align: "center", variant: "maxWidth650px" }),
                     "grid gap-10"
                 )}
             >
