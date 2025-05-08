@@ -98,6 +98,153 @@ export default function SearchAccount() {
                             >
                                 <h3>Name: Joash Cabanilla</h3>
                             </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
+                            <div
+                                className={cn(
+                                    card({ variant: "searchAccount" })
+                                )}
+                            >
+                                <h3>Name: Joash Cabanilla</h3>
+                            </div>
                         </div>
                     </ScrollArea>
                 </div>
