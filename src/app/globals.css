@@ -156,9 +156,9 @@
 
 @layer base {
     * {
-        @apply border-border outline-ring scrollbar-thin scrollbar-thumb-card/80 scrollbar-thumb-rounded-sm scrollbar-track-muted-foreground scrollbar-corner-secondary scrollbar-corner-rounded-sm antialiased;
+        @apply border-border outline-ring antialiased;
     }
     body {
-        @apply bg-background h-dvh w-full;
+        @apply bg-background scrollbar-thin scrollbar-thumb-card/80 scrollbar-thumb-rounded-sm scrollbar-track-muted-foreground scrollbar-corner-secondary scrollbar-corner-rounded-sm h-dvh w-full;
     }
 }
