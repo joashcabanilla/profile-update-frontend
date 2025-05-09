@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1746767749287,
+      "tag": "0000_zippy_sprite",
+      "breakpoints": true
+    }
+  ]
+}
