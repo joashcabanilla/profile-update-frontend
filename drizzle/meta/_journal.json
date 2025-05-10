@@ -8,6 +8,13 @@
       "when": 1746767749287,
       "tag": "0000_zippy_sprite",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1746841117678,
+      "tag": "0001_volatile_psynapse",
+      "breakpoints": true
     }
   ]
 }

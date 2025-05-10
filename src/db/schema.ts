@@ -13,7 +13,7 @@ export const membersTable = mysqlTable("members", {
     firstname: varchar("firstname", { length: 255 }).notNull(),
     middlename: varchar("middlename", { length: 255 }),
     lastname: varchar("lastname", { length: 255 }).notNull(),
-    birthdate: date("birthdate"),
+    birthdate: date("birthdate").notNull(),
     branch: varchar("branch", { length: 255 }).notNull(),
     cpNumber: varchar("cpNumber", { length: 255 }).unique(),
     email: varchar("email", { length: 255 }).unique(),
