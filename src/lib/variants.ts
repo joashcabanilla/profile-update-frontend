@@ -14,7 +14,7 @@ export const card = tv({
             maxWidth650px:
                 "max-w-[650px] rounded-2xl border p-4 shadow-2xl sm:p-6",
             searchAccount:
-                "bg-accent text-accent-foreground w-full rounded-lg border p-2 text-lg font-bold shadow-none"
+                "bg-muted text-accent-foreground w-full rounded-lg border p-2 text-lg font-bold shadow-xs"
         }
     }
 });
@@ -47,5 +47,14 @@ export const text = tv({
         size: "md",
         align: "left",
         weight: "md"
+    }
+});
+
+export const button = tv({
+    variants: {
+        variant: {
+            closeIcon:
+                "text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 transition-[color,box-shadow, opacity] absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md delay-100 ease-[cubic-bezier(0.42,0,1,1)] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+        }
     }
 });

@@ -14,7 +14,7 @@ const steps = [
     },
     {
         step: 2,
-        title: "Verify"
+        title: "Sign In"
     },
     {
         step: 3,
