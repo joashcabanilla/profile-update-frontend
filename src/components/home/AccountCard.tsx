@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { text, card } from "@/lib/variants";
 import { Button } from "@/components/ui/button";

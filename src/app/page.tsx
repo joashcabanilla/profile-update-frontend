@@ -1,25 +1,16 @@
-"use client";
-
-import { useTheme } from "next-themes";
-import { useEffect } from "react";
-
-//context global state
-import { useThemeContext } from "@/context/theme-context";
+import { Suspense } from "react";
 
 //components
 import MainLayout from "@/components/home/MainLayout";
 import SkeletonCard from "@/components/home/SkeletonCard";
+import { getAllMembers } from "@/db/membersTable";
 
-export default function Page() {
-    const { mounted, setMounted, setTheme } = useThemeContext();
-    const { resolvedTheme } = useTheme();
-
-    useEffect(() => {
-        if (resolvedTheme) {
-            setMounted(true);
-            setTheme(resolvedTheme === "light" ? "light" : "dark");
-        }
-    }, [resolvedTheme, setMounted, setTheme]);
-
-    return !mounted ? <SkeletonCard /> : <MainLayout />;
+export default async function Page() {
+    const members = await getAllMembers();
+    console.log(members);
+    return (
+        <Suspense fallback={<SkeletonCard />}>
+            <MainLayout />
+        </Suspense>
+    );
 }

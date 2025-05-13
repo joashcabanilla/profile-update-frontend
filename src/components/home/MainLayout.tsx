@@ -1,3 +1,11 @@
+"use client";
+
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
+
+//context global state
+import { useThemeContext } from "@/context/theme-context";
+
 import { cn } from "@/lib/utils";
 import { container, card, text } from "@/lib/variants";
 import Image from "next/image";
@@ -10,9 +18,22 @@ import Terms from "@/components/home/Terms";
 import SwitchTheme from "@/components/home/SwitchTheme";
 import Steps from "@/components/home/Steps";
 import SearchAccount from "@/components/home/SearchAccount";
+import SkeletonCard from "@/components/home/SkeletonCard";
 
 export default function MainLayout() {
-    return (
+    const { mounted, setMounted, setTheme } = useThemeContext();
+    const { resolvedTheme } = useTheme();
+
+    useEffect(() => {
+        if (resolvedTheme) {
+            setMounted(true);
+            setTheme(resolvedTheme === "light" ? "light" : "dark");
+        }
+    }, [resolvedTheme, setMounted, setTheme]);
+
+    return !mounted ? (
+        <SkeletonCard />
+    ) : (
         <div className={container()}>
             <Terms />
             <div

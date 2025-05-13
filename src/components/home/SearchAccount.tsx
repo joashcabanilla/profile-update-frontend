@@ -7,10 +7,15 @@ import { CircleX, SearchIcon } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import AccountCard from "@/components/home/AccountCard";
 
 export default function SearchAccount() {
     const id = useId();
     const [searchInput, setSearchInput] = useState<string>("");
+
+    function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+        setSearchInput(e.currentTarget.value);
+    }
 
     return (
         <div className="grid gap-6">
@@ -62,11 +67,7 @@ export default function SearchAccount() {
                                 placeholder="Enter PB# or Member ID"
                                 type="search"
                                 value={searchInput}
-                                onInput={(
-                                    e: React.ChangeEvent<HTMLInputElement>
-                                ) => {
-                                    setSearchInput(e.currentTarget.value);
-                                }}
+                                onInput={handleSearchInput}
                             />
                             <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">
                                 <SearchIcon size={25} />
@@ -95,12 +96,16 @@ export default function SearchAccount() {
                         className="h-60 w-full rounded-lg border-2 shadow"
                     >
                         <div className="grid gap-4 p-4 sm:p-6">
-                            <p className="text-muted-foreground font-jetbrains text-center text-sm italic">
-                                This section shows your search results. If you
-                                see multiple accounts due to duplicate PB# or
-                                Member ID, select your own account from the
-                                list.
-                            </p>
+                            {!searchInput ? (
+                                <p className="text-muted-foreground font-jetbrains text-center text-sm italic">
+                                    This section shows your search results. If
+                                    you see multiple accounts due to duplicate
+                                    PB# or Member ID, select your own account
+                                    from the list.
+                                </p>
+                            ) : (
+                                <AccountCard />
+                            )}
                         </div>
                     </ScrollArea>
                 </div>
