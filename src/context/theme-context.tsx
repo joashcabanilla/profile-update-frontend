@@ -1,19 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-
-type ThemeContextProviderProps = {
-    children: React.ReactNode;
-};
-
-type Theme = "light" | "dark";
-
-type ThemeContext = {
-    theme: Theme;
-    setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-    mounted: boolean;
-    setMounted: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { Theme, ThemeContextProviderProps, ThemeContext } from "@/types/type";
 
 const themeContext = createContext<ThemeContext | null>(null);
 

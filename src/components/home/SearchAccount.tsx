@@ -1,21 +1,35 @@
 "use client";
 
+//style utils and variants
 import { cn } from "@/lib/utils";
 import { text, button } from "@/lib/variants";
 import { useId, useState } from "react";
+
+//icons
 import { CircleX, SearchIcon } from "lucide-react";
 
+//components
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import AccountCard from "@/components/home/AccountCard";
 
+//context global state
+import { useMemberContext } from "@/context/member-context";
+
 export default function SearchAccount() {
     const id = useId();
     const [searchInput, setSearchInput] = useState<string>("");
+    const { member, setSearchedMember } = useMemberContext();
 
-    function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.currentTarget.value);
-    }
+        const search = e.currentTarget.value;
+
+        const filteredMember = member.filter((data) => {
+            return data.pbno === search || data.memid === search;
+        });
+        setSearchedMember(filteredMember);
+    };
 
     return (
         <div className="grid gap-6">

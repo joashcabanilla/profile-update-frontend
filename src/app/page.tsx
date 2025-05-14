@@ -4,13 +4,15 @@ import { Suspense } from "react";
 import MainLayout from "@/components/home/MainLayout";
 import SkeletonCard from "@/components/home/SkeletonCard";
 import { getAllMembers } from "@/db/membersTable";
+import MemberContextProvider from "@/context/member-context";
 
 export default async function Page() {
-    const members = await getAllMembers();
-    console.log(members);
+    const member = await getAllMembers();
     return (
         <Suspense fallback={<SkeletonCard />}>
-            <MainLayout />
+            <MemberContextProvider>
+                <MainLayout member={member} />
+            </MemberContextProvider>
         </Suspense>
     );
 }

@@ -1,0 +1,45 @@
+export type Theme = "light" | "dark";
+
+export type ThemeContextProviderProps = {
+    children: React.ReactNode;
+};
+
+export type ThemeContext = {
+    theme: Theme;
+    setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+    mounted: boolean;
+    setMounted: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type MemberContextProviderProps = {
+    children: React.ReactNode;
+};
+
+type setStateMember = React.Dispatch<React.SetStateAction<Member[]>>;
+
+export type MemberContext = {
+    member: Member[];
+    setMember: setStateMember;
+    searchedMember: Member[];
+    setSearchedMember: setStateMember;
+};
+
+export type Member = {
+    id: bigint;
+    memid: string | null;
+    pbno: string | null;
+    firstname: string;
+    middlename: string | null;
+    lastname: string;
+    birthdate: Date;
+    branch: string;
+    cpNumber: string | null;
+    email: string | null;
+    tinNumber: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+};
+
+export interface mainLayoutProps {
+    member: Member[];
+}

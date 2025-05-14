@@ -6,6 +6,9 @@ export const getAllMembers = async () => {
     const members = await db
         .select()
         .from(membersTable)
-        .orderBy(asc(membersTable.lastname), membersTable.branch);
-    return members;
+        .orderBy(asc(membersTable.lastname), membersTable.branch)
+        .prepare();
+
+    const data = await members.execute();
+    return data;
 };
