@@ -8,7 +8,7 @@ export const card = tv({
     base: "bg-card text-card-foreground",
     variants: {
         align: {
-            center: "mx-auto mt-6 mb-6"
+            center: "mx-auto mt-4 mb-4 sm:mt-0 sm:mb-0"
         },
         variant: {
             maxWidth650px:

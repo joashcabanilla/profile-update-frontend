@@ -107,7 +107,7 @@ export default function SearchAccount() {
                     </div>
                     <ScrollArea
                         type="always"
-                        className="h-60 w-full rounded-lg border-2 shadow"
+                        className="h-80 sm:h-60 w-full rounded-lg border-2 shadow"
                     >
                         <div className="grid gap-4 p-4 sm:p-6">
                             {!searchInput ? (
