@@ -3,7 +3,7 @@
 //style utils and variants
 import { cn } from "@/lib/utils";
 import { text, button } from "@/lib/variants";
-import { useId, useState } from "react";
+import { useId, useState, useRef } from "react";
 
 //icons
 import { CircleX, SearchIcon } from "lucide-react";
@@ -18,6 +18,7 @@ import { useMemberContext } from "@/context/member-context";
 
 export default function SearchAccount() {
     const id = useId();
+    const inputRef = useRef<HTMLInputElement>(null);
     const [searchInput, setSearchInput] = useState<string>("");
     const { member, setSearchedMember } = useMemberContext();
 
@@ -29,6 +30,13 @@ export default function SearchAccount() {
             return data.pbno === search || data.memid === search;
         });
         setSearchedMember(filteredMember);
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            inputRef.current?.blur();
+        }
     };
 
     return (
@@ -77,11 +85,13 @@ export default function SearchAccount() {
                         <div className="relative">
                             <Input
                                 id={id}
+                                ref={inputRef}
                                 className="peer text-foreground h-12 rounded-xl border-2 ps-9 pe-9 indent-2 text-sm font-extrabold placeholder:font-normal sm:text-lg"
                                 placeholder="Enter PB# or Member ID"
                                 type="search"
                                 value={searchInput}
                                 onInput={handleSearchInput}
+                                onKeyDown={handleKeyDown}
                             />
                             <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">
                                 <SearchIcon size={25} />
@@ -107,7 +117,7 @@ export default function SearchAccount() {
                     </div>
                     <ScrollArea
                         type="always"
-                        className="h-80 sm:h-60 w-full rounded-lg border-2 shadow"
+                        className="h-80 w-full rounded-lg border-2 shadow sm:h-60"
                     >
                         <div className="grid gap-4 p-4 sm:p-6">
                             {!searchInput ? (
