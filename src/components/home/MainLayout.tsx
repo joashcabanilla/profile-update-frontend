@@ -17,14 +17,21 @@ import Logo from "@/assets/images/logo1.png";
 //components
 import Terms from "@/components/home/Terms";
 import SwitchTheme from "@/components/home/SwitchTheme";
-import Steps from "@/components/home/Steps";
-import SearchAccount from "@/components/home/SearchAccount";
+import StepIndicator from "@/components/home/StepIndicator";
+import Step1 from "@/components/home/Step1";
+import Step2 from "@/components/home/Step2";
+import Step3 from "@/components/home/Step3";
 
 //types
 import { mainLayoutProps } from "@/types/type";
 
 export default function MainLayout({ member }: mainLayoutProps) {
-    const { setMember } = useMemberContext();
+    const { setMember, step } = useMemberContext();
+    const activeStep  = {
+        1: <Step1 />,
+        2: <Step2 />,
+        3: <Step3 />
+    }[step];
 
     useEffect(() => {
         setMember(member);
@@ -63,8 +70,8 @@ export default function MainLayout({ member }: mainLayoutProps) {
                         Update Member Profile
                     </h1>
                 </div>
-                <Steps />
-                <SearchAccount />
+                <StepIndicator />
+                {activeStep}
             </div>
         </div>
     );

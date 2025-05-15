@@ -20,6 +20,8 @@ export type MemberContext = {
     setMember: setStateMember;
     searchedMember: Member[];
     setSearchedMember: setStateMember;
+    step: number;
+    setStep:React.Dispatch<React.SetStateAction<number>>
 };
 
 export type Member = {

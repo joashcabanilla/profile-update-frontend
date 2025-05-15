@@ -9,7 +9,12 @@ import { Button } from "@/components/ui/button";
 import { useMemberContext } from "@/context/member-context";
 
 export default function AccountCard() {
-    const { searchedMember } = useMemberContext();
+    const { searchedMember, setStep } = useMemberContext();
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        setStep(2);
+    };
 
     return (
         <>
@@ -65,6 +70,7 @@ export default function AccountCard() {
                                     type="button"
                                     size="xl"
                                     className="w-full text-base font-extrabold sm:w-fit sm:text-lg"
+                                    onClick={handleClick}
                                 >
                                     Sign In
                                 </Button>

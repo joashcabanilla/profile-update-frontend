@@ -30,8 +30,12 @@ export default function Page() {
                     setLoading(false);
                     setTheme(resolvedTheme as Theme);
                 }
+            })
+            .catch((error) => {
+                console.error("Error fetching member:", error);
+                setLoading(true);
             });
-    });
+    }, [resolvedTheme, setTheme]);
 
     return loading ? (
         <SkeletonCard />

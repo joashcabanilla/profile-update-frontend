@@ -16,7 +16,7 @@ import AccountCard from "@/components/home/AccountCard";
 //context global state
 import { useMemberContext } from "@/context/member-context";
 
-export default function SearchAccount() {
+export default function Step1() {
     const id = useId();
     const inputRef = useRef<HTMLInputElement>(null);
     const [searchInput, setSearchInput] = useState<string>("");
