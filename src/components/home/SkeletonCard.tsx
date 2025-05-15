@@ -8,7 +8,7 @@ export default function SkeletonCard() {
             <div
                 className={cn(
                     card({ align: "center", variant: "maxWidth650px" }),
-                    "grid gap-8"
+                    "grid gap-10"
                 )}
             >
                 <div className="grid gap-4">
@@ -16,7 +16,7 @@ export default function SkeletonCard() {
                         <Skeleton className="h-[70px] w-9/12 max-w-[300px]" />
                         <Skeleton className="h-[35px] w-2/12 sm:w-1/12" />
                     </div>
-                    <Skeleton className="h-[40px] w-full" />
+                    <Skeleton className="h-[45px] w-full" />
                 </div>
                 <Skeleton className="h-[60px] w-full" />
                 <div className="grid gap-6">
@@ -25,7 +25,7 @@ export default function SkeletonCard() {
                         <Skeleton className="h-[35px] w-4/12" />
                         <div className="grid gap-2">
                             <Skeleton className="h-[45px] w-full" />
-                            <Skeleton className="h-50 w-full" />
+                            <Skeleton className="h-80 sm:h-60 w-full" />
                         </div>
                     </div>
                 </div>

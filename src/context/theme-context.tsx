@@ -9,10 +9,8 @@ export default function ThemeContextProvider({
     children
 }: ThemeContextProviderProps) {
     const [theme, setTheme] = useState<Theme>("light");
-    const [mounted, setMounted] = useState<boolean>(false);
-
     return (
-        <themeContext.Provider value={{ theme, setTheme, mounted, setMounted }}>
+        <themeContext.Provider value={{ theme, setTheme}}>
             {children}
         </themeContext.Provider>
     );

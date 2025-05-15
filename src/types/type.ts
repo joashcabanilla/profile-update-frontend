@@ -7,8 +7,6 @@ export type ThemeContextProviderProps = {
 export type ThemeContext = {
     theme: Theme;
     setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-    mounted: boolean;
-    setMounted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type MemberContextProviderProps = {
