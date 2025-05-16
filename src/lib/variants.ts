@@ -14,7 +14,8 @@ export const card = tv({
             maxWidth650px:
                 "max-w-[650px] rounded-2xl border p-4 shadow-2xl sm:p-6",
             searchAccount:
-                "bg-muted text-accent-foreground w-full rounded-lg border p-2 text-lg font-bold shadow-xs"
+                "bg-accent/20 text-accent-foreground w-full rounded-lg border p-2 text-lg font-bold shadow-xs",
+            signIn: "w-full border-2 shadow rounded-lg p-2 sm:p-4"
         }
     }
 });

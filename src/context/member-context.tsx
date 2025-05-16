@@ -12,8 +12,21 @@ export default function MemberContextProvider({
         MemberContext["searchedMember"]
     >([]);
     const [step, setStep] = useState<MemberContext["step"]>(1);
+    const [memberId, setMemberId] = useState<MemberContext["memberId"]>(undefined);
+
     return (
-        <memberContext.Provider value={{ member, setMember, searchedMember, setSearchedMember, step, setStep }}>
+        <memberContext.Provider
+            value={{
+                member,
+                setMember,
+                searchedMember,
+                setSearchedMember,
+                step,
+                setStep,
+                memberId,
+                setMemberId
+            }}
+        >
             {children}
         </memberContext.Provider>
     );

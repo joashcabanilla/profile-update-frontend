@@ -49,11 +49,11 @@ export default function Step1() {
                         size: "md",
                         weight: "sm"
                     }),
-                    "border-primary bg-muted grid gap-2 rounded-2xl border border-dashed p-2 [&_strong]:font-extrabold"
+                    "border-primary bg-accent text-accent-foreground grid gap-2 rounded-2xl border-2 border-double p-2 [&_strong]:font-extrabold"
                 )}
             >
                 <p>
-                    <strong>Note 1:</strong> Example format for{" "}
+                    Example format for{" "}
                     <strong>PB number &ldquo;001234&ldquo; no Dash(-)</strong>,
                     kapag may letra naman <strong>&ldquo;N001234&ldquo;</strong>{" "}
                     at kung{" "}
@@ -62,7 +62,7 @@ export default function Step1() {
                     <strong> 123456</strong>
                 </p>
                 <p>
-                    <strong>Note 2:</strong>{" "}
+                    <strong>Note:</strong>{" "}
                     <strong>Priority ang Old Passbook sa pag verify.</strong>
                 </p>
             </div>

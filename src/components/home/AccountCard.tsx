@@ -9,10 +9,12 @@ import { Button } from "@/components/ui/button";
 import { useMemberContext } from "@/context/member-context";
 
 export default function AccountCard() {
-    const { searchedMember, setStep } = useMemberContext();
+    const { searchedMember, setStep, setMemberId } = useMemberContext();
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        const id = e.currentTarget.dataset.memberid;
+        setMemberId(id);
         setStep(2);
     };
 
@@ -35,7 +37,7 @@ export default function AccountCard() {
                             className={cn(
                                 card({ variant: "searchAccount" }),
                                 text({ size: "lg" }),
-                                "bg-muted grid gap-4 p-4 sm:grid-cols-4"
+                                "grid gap-4 p-4 sm:grid-cols-4"
                             )}
                         >
                             <div className="[&_strong]:text-primary grid gap-1 font-bold sm:col-span-3 [&_strong]:font-bold">
@@ -67,6 +69,7 @@ export default function AccountCard() {
                             </div>
                             <div className="self-center sm:justify-self-end">
                                 <Button
+                                    data-memberid={id}
                                     type="button"
                                     size="xl"
                                     className="w-full text-base font-extrabold sm:w-fit sm:text-lg"

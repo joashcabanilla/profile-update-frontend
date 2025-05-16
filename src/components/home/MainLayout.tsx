@@ -35,7 +35,7 @@ export default function MainLayout({ member }: mainLayoutProps) {
 
     useEffect(() => {
         setMember(member);
-    });
+    },[setMember, member]);
 
     return (
         <div className={container()}>

@@ -21,11 +21,13 @@ export type MemberContext = {
     searchedMember: Member[];
     setSearchedMember: setStateMember;
     step: number;
-    setStep:React.Dispatch<React.SetStateAction<number>>
+    setStep: React.Dispatch<React.SetStateAction<number>>;
+    memberId: string | undefined;
+    setMemberId: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
 export type Member = {
-    id: bigint;
+    id: string;
     memid: string | null;
     pbno: string | null;
     firstname: string;
