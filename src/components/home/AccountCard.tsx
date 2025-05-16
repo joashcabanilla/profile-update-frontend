@@ -26,7 +26,7 @@ export default function AccountCard() {
                 searchedMember.map((data) => {
                     const { id, pbno, memid, firstname, middlename, lastname } =
                         data;
-                    let name = `${firstname} ${middlename} ${lastname}`;
+                    let name = `${firstname} ${middlename ?? ""} ${lastname}`;
                     name = name.replace("�", "ñ");
                     const pbnoData = pbno || "No Data";
                     const memidData = memid || "No Data";

@@ -1,12 +1,26 @@
 "use client";
 
+//hooks
+import { useId, useState } from "react";
+
 //style utils and variants
 import { cn } from "@/lib/utils";
 import { text, card } from "@/lib/variants";
+import { format } from "date-fns";
+
+//icons
+import { CalendarIcon } from "lucide-react";
 
 //components
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger
+} from "@/components/ui/popover";
 
 //context global state
 import { useMemberContext } from "@/context/member-context";
@@ -16,6 +30,8 @@ import { Member } from "@/types/type";
 
 export default function Step2() {
     const { memberId, searchedMember } = useMemberContext();
+    const [date, setDate] = useState<Date | undefined>();
+    const id = useId();
 
     const memberData: Member[] = searchedMember.filter(
         (data) => data.id == memberId && data
@@ -41,14 +57,13 @@ export default function Step2() {
             <div
                 className={cn(
                     card({ variant: "signIn" }),
-                    "grid gap-4 [&_input]:h-12 [&_input]:border-2 [&_input]:font-bold [&_input]:shadow-none [&_label]:text-base [&_label]:font-bold [&input]:text-base"
+                    "grid gap-4 [&_label]:text-base [&_label]:font-bold"
                 )}
             >
                 <div className="*:not-first:mt-2">
                     <Label htmlFor="pbMemId">PB# / Member ID</Label>
                     <Input
                         id="pbMemId"
-                        className="rounded-2xl indent-0 disabled:opacity-100"
                         placeholder="PB# / Member ID"
                         type="text"
                         disabled
@@ -56,13 +71,45 @@ export default function Step2() {
                     />
                 </div>
                 <div className="*:not-first:mt-2">
-                    <Label htmlFor="birthdate">Birthdate</Label>
-                    <Input
-                        id="birthdate"
-                        className="rounded-2xl"
-                        placeholder=""
-                        type="date"
-                    />
+                    <Label htmlFor={id}>Birthdate</Label>
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button
+                                id={id}
+                                variant={"outline"}
+                                className={cn(
+                                    "group bg-card hover:bg-accent/30 border-input h-12 w-full justify-between rounded-2xl px-3 text-base font-bold shadow-none outline-offset-0 outline-none focus-visible:outline-[3px]",
+                                    !date && "text-muted-foreground"
+                                )}
+                            >
+                                <span
+                                    className={cn(
+                                        "truncate text-base font-bold",
+                                        !date && "text-muted-foreground"
+                                    )}
+                                >
+                                    {date
+                                        ? format(date, "MM/dd/yyyy")
+                                        : "Pick a date"}
+                                </span>
+                                <CalendarIcon
+                                    size={16}
+                                    className="text-muted-foreground/80 group-hover:text-foreground shrink-0 transition-colors"
+                                    aria-hidden="true"
+                                />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-2" align="start">
+                            <Calendar
+                                mode="single"
+                                className="p-2"
+                                selected={date}
+                                onSelect={handleDayPickerSelect}
+                                month={month}
+                                onMonthChange={setMonth}
+                            />
+                        </PopoverContent>
+                    </Popover>
                 </div>
             </div>
         </div>
