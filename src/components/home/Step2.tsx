@@ -102,11 +102,8 @@ export default function Step2() {
                         <PopoverContent className="w-auto p-2" align="start">
                             <Calendar
                                 mode="single"
-                                className="p-2"
                                 selected={date}
-                                onSelect={handleDayPickerSelect}
-                                month={month}
-                                onMonthChange={setMonth}
+                                onSelect={setDate}
                             />
                         </PopoverContent>
                     </Popover>

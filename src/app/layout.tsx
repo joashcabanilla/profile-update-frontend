@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeContextProvider from "@/context/theme-context";
 
 //CSS and fonts
+import "react-day-picker/style.css";
 import "./globals.css";
 import { poppins, jetbrains, inter } from "@/assets/fonts/fonts";
 
