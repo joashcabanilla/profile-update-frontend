@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { text, card, button } from "@/lib/variants";
 
 //icons
-import { CircleX } from "lucide-react";
+import { CircleX, ChevronDownIcon } from "lucide-react";
 
 //components
 import { Label } from "@/components/ui/label";
@@ -167,15 +167,30 @@ export default function Step2() {
                                     onSelect={handleDayPickerSelect}
                                     components={{
                                         Dropdown: (props: DropdownProps) => {
-                                            console.log(props);
                                             return (
-                                                <select onChange={}>
-                                                    {props.options?.map((option, id) => (
-                                                        <option key={id} value={option.value}>
-                                                            {option.label ?? option.value}
-                                                        </option>
-                                                    ))}
-                                                </select>
+                                                <div className="relative">
+                                                    <select defaultValue={props.value} onChange={props.onChange} className="peer appearance-none rounded-lg border p-1 pe-7 text-base shadow-2xs">
+                                                        {props.options?.map(
+                                                            (option, id) => (
+                                                                <option
+                                                                    key={id}
+                                                                    value={
+                                                                        option.value
+                                                                    }
+                                                                >
+                                                                    {option.label ??
+                                                                        option.value}
+                                                                </option>
+                                                            )
+                                                        )}
+                                                    </select>
+                                                    <div className="absolute inset-y-0 end-0 flex items-center justify-center px-1">
+                                                        <ChevronDownIcon
+                                                            size={20}
+                                                            className="text-primary"
+                                                        />
+                                                    </div>
+                                                </div>
                                             );
                                         }
                                     }}

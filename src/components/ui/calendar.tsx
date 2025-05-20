@@ -9,7 +9,7 @@ export function Calendar({ ...props }: React.ComponentProps<typeof DayPicker>) {
                 today: "font-extrabold text-primary",
                 selected:
                     "font-extrabold bg-primary !text-primary-foreground rounded-lg text-lg",
-                dropdowns: `${classname.dropdowns} !gap-4`
+                dropdowns: `${classname.dropdowns} !gap-2`
             }}
             animate
             captionLayout="dropdown"
