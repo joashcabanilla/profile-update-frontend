@@ -81,9 +81,15 @@ export default function Terms() {
                                                     , you are consenting to the
                                                     collection, processing, and
                                                     use of your information in
-                                                    accordance with Republic Act
-                                                    10173, or the Data Privacy
-                                                    Act of 2012.
+                                                    accordance with{" "}
+                                                    <strong>
+                                                        Republic Act 10173
+                                                    </strong>
+                                                    , or the{" "}
+                                                    <strong>
+                                                        Data Privacy Act of
+                                                        2012
+                                                    </strong>.
                                                 </p>
 
                                                 <p
@@ -91,16 +97,22 @@ export default function Terms() {
                                                         defaultTextProps
                                                     )}
                                                 >
-                                                    A member&apos;s personal
-                                                    data obtained from this
-                                                    portal is entered into and
-                                                    stored within the
-                                                    company&apos;s authorized
-                                                    information and
+                                                    A{" "}
+                                                    <strong>
+                                                        member&apos;s personal
+                                                        data
+                                                    </strong>{" "}
+                                                    obtained from this portal is
+                                                    entered into and stored
+                                                    within the company&apos;s
+                                                    authorized information and
                                                     communications system, and
                                                     will be accessed only by
                                                     authorized personnel from
-                                                    the strong MIS Department.
+                                                    the{" "}
+                                                    <strong>
+                                                        MIS Department
+                                                    </strong>.
                                                 </p>
 
                                                 <p
@@ -108,13 +120,20 @@ export default function Terms() {
                                                         defaultTextProps
                                                     )}
                                                 >
-                                                    The MIS Department has
-                                                    instituted appropriate
+                                                    The{" "}
+                                                    <strong>
+                                                        MIS Department
+                                                    </strong>{" "}
+                                                    has instituted appropriate
                                                     organizational, technical,
                                                     and physical security
                                                     measures to ensure the
-                                                    protection of the
-                                                    member&apos;s personal data.
+                                                    protection of the{" "}
+                                                    <strong>
+                                                        member&apos;s personal
+                                                        data
+                                                    </strong>
+                                                    .
                                                 </p>
                                             </div>
                                         </div>
@@ -132,7 +151,7 @@ export default function Terms() {
                         <Button
                             type="button"
                             size={"lg"}
-                            className="font-jetbrains font-extrabold"
+                            className="font-jetbrains font-extrabold cursor-pointer"
                         >
                             I agree
                         </Button>

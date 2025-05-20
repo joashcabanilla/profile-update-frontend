@@ -1,20 +1,21 @@
 "use client";
 
 //hooks
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { format, isValid, parse } from "date-fns";
-import { DropdownProps } from "react-day-picker";
+import { toast } from "sonner";
 
 //style utils and variants
 import { cn } from "@/lib/utils";
 import { text, card, button } from "@/lib/variants";
 
 //icons
-import { CircleX, ChevronDownIcon } from "lucide-react";
+import { CircleX } from "lucide-react";
 
 //components
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
     Popover,
     PopoverTrigger,
@@ -29,8 +30,8 @@ import { useMemberContext } from "@/context/member-context";
 import { Member } from "@/types/type";
 
 export default function Step2() {
-    const { memberId, searchedMember } = useMemberContext();
-    const [birthdate, setBirthdate] = useState<string>("");
+    const { memberId, searchedMember, setStep } = useMemberContext();
+    const [birthdateInput, setBirthdateInput] = useState<string>("");
     const [month, setMonth] = useState<Date>(new Date());
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
 
@@ -41,8 +42,8 @@ export default function Step2() {
         (data) => data.id == memberId && data
     );
 
-    const { memid, pbno } = memberData[0];
-    const pbMemId = memid ?? pbno ?? "";
+    const { memid, pbno, birthdate } = memberData[0];
+    const pbMemId = pbno ?? memid ?? "";
 
     const handleBirhtdate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.target.value;
@@ -51,7 +52,7 @@ export default function Step2() {
         let dateInput = input.replace(/\D/g, "");
 
         if (input.length < inputPrev.length) {
-            setBirthdate(input);
+            setBirthdateInput(input);
             birthdatePrevRef.current = input;
             setSelectedDate(undefined);
             return;
@@ -64,7 +65,7 @@ export default function Step2() {
             dateInput = dateInput.slice(0, 5) + "/" + dateInput.slice(5);
         }
         const formatted = dateInput.slice(0, 10);
-        setBirthdate(formatted);
+        setBirthdateInput(formatted);
         birthdatePrevRef.current = formatted;
 
         const parsedDate = parse(formatted, "MM/dd/yyyy", new Date());
@@ -79,13 +80,31 @@ export default function Step2() {
 
     const handleDayPickerSelect = (date: Date | undefined) => {
         if (!date) {
-            setBirthdate("");
+            setBirthdateInput("");
             setMonth(new Date());
             setSelectedDate(undefined);
         } else {
             setSelectedDate(date);
             setMonth(date);
-            setBirthdate(format(date, "MM/dd/yyyy"));
+            setBirthdateInput(format(date, "MM/dd/yyyy"));
+        }
+    };
+
+    const handleSignBtn = (
+        memberBirthdate: Date,
+        birthdate: string
+    ): undefined => {
+        const memberData = format(memberBirthdate, "MM/dd/yyyy");
+
+        if (birthdate === memberData) {
+            toast.success("Signed in successfully.", {
+                duration: 3000
+            });
+            setStep(3);
+        } else {
+            toast.error("Sign-in unsuccessful. Incorrect birthdate.", {
+                duration: 3000
+            });
         }
     };
 
@@ -131,16 +150,16 @@ export default function Step2() {
                                     type="text"
                                     maxLength={10}
                                     onInput={handleBirhtdate}
-                                    value={birthdate}
+                                    value={birthdateInput}
                                     className="peer pe-9"
                                 />
                             </PopoverTrigger>
                             <PopoverContent
                                 onOpenAutoFocus={(event: Event) => {
                                     event.preventDefault();
-                                    if (birthdate.length == 10) {
+                                    if (birthdateInput.length == 10) {
                                         const parsedDate = parse(
-                                            birthdate,
+                                            birthdateInput,
                                             "MM/dd/yyyy",
                                             new Date()
                                         );
@@ -165,35 +184,6 @@ export default function Step2() {
                                     month={month}
                                     onMonthChange={setMonth}
                                     onSelect={handleDayPickerSelect}
-                                    components={{
-                                        Dropdown: (props: DropdownProps) => {
-                                            return (
-                                                <div className="relative">
-                                                    <select defaultValue={props.value} onChange={props.onChange} className="peer appearance-none rounded-lg border p-1 pe-7 text-base shadow-2xs">
-                                                        {props.options?.map(
-                                                            (option, id) => (
-                                                                <option
-                                                                    key={id}
-                                                                    value={
-                                                                        option.value
-                                                                    }
-                                                                >
-                                                                    {option.label ??
-                                                                        option.value}
-                                                                </option>
-                                                            )
-                                                        )}
-                                                    </select>
-                                                    <div className="absolute inset-y-0 end-0 flex items-center justify-center px-1">
-                                                        <ChevronDownIcon
-                                                            size={20}
-                                                            className="text-primary"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            );
-                                        }
-                                    }}
                                 />
                             </PopoverContent>
                         </Popover>
@@ -202,14 +192,14 @@ export default function Step2() {
                                 button({
                                     variant: "closeIcon"
                                 }),
-                                birthdate
+                                birthdateInput
                                     ? "cursor-pointer opacity-100"
                                     : "pointer-events-none opacity-0"
                             )}
                             aria-label="Submit search"
                             type="submit"
                             onClick={() => {
-                                setBirthdate("");
+                                setBirthdateInput("");
                                 setMonth(new Date());
                                 setSelectedDate(undefined);
                             }}
@@ -217,6 +207,26 @@ export default function Step2() {
                             <CircleX size={20} aria-hidden="true" />
                         </button>
                     </div>
+                </div>
+                <div className="mt-4 grid grid-cols-2">
+                    <Button
+                        variant="link"
+                        type="button"
+                        className="cursor-pointer text-base"
+                        onClick={() => {
+                            setStep(1);
+                        }}
+                    >
+                        Back
+                    </Button>
+                    <Button
+                        type="button"
+                        className="cursor-pointer text-base font-bold"
+                        size="lg"
+                        onClick={() => handleSignBtn(birthdate, birthdateInput)}
+                    >
+                        Sign In
+                    </Button>
                 </div>
             </div>
         </div>

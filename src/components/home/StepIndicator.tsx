@@ -29,7 +29,7 @@ export default function StepIndicator() {
         }
     ];
 
-    const { step } = useMemberContext();
+    const { step, stepCompleted } = useMemberContext();
 
     return (
         <div className="w-full space-y-8 text-center">
@@ -38,6 +38,7 @@ export default function StepIndicator() {
                     <StepperItem
                         key={step}
                         step={step}
+                        completed={stepCompleted}
                         className="not-last:flex-1 max-md:items-start"
                     >
                         <StepperTrigger className="pointer-events-none rounded max-md:flex-col">

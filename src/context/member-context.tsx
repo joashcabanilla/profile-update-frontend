@@ -12,7 +12,10 @@ export default function MemberContextProvider({
         MemberContext["searchedMember"]
     >([]);
     const [step, setStep] = useState<MemberContext["step"]>(1);
-    const [memberId, setMemberId] = useState<MemberContext["memberId"]>(undefined);
+    const [stepCompleted, setStepCompleted] =
+        useState<MemberContext["stepCompleted"]>(false);
+    const [memberId, setMemberId] =
+        useState<MemberContext["memberId"]>(undefined);
 
     return (
         <memberContext.Provider
@@ -23,6 +26,8 @@ export default function MemberContextProvider({
                 setSearchedMember,
                 step,
                 setStep,
+                stepCompleted,
+                setStepCompleted,
                 memberId,
                 setMemberId
             }}

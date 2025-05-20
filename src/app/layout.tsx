@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeContextProvider from "@/context/theme-context";
+import ResponsiveToaster from "@/components/ResponsiveToaster";
 
 //CSS and fonts
 import "react-day-picker/style.css";
@@ -31,6 +32,7 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <ThemeContextProvider>{children}</ThemeContextProvider>
+                    <ResponsiveToaster />
                 </ThemeProvider>
             </body>
         </html>

@@ -72,7 +72,7 @@ export default function AccountCard() {
                                     data-memberid={id}
                                     type="button"
                                     size="xl"
-                                    className="w-full text-base font-extrabold sm:w-fit sm:text-lg"
+                                    className="w-full text-base font-extrabold sm:w-fit sm:text-lg cursor-pointer"
                                     onClick={handleClick}
                                 >
                                     Sign In

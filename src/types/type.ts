@@ -22,6 +22,8 @@ export type MemberContext = {
     setSearchedMember: setStateMember;
     step: number;
     setStep: React.Dispatch<React.SetStateAction<number>>;
+    stepCompleted: boolean;
+    setStepCompleted: React.Dispatch<React.SetStateAction<boolean>>;
     memberId: string | undefined;
     setMemberId: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
