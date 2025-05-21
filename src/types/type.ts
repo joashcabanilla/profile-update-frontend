@@ -47,3 +47,11 @@ export type Member = {
 export interface mainLayoutProps {
     member: Member[];
 }
+
+export type updateProfileInput = {
+    id: string;
+    label: string;
+    value?: string;
+    class?: string;
+    disabled?: boolean;
+};

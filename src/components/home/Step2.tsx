@@ -34,6 +34,7 @@ export default function Step2() {
     const [birthdateInput, setBirthdateInput] = useState<string>("");
     const [month, setMonth] = useState<Date>(new Date());
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+    const [calendarOpen, setCalendarOpen] = useState<boolean>(false);
 
     const birthdateRef = useRef<HTMLInputElement>(null);
     const birthdatePrevRef = useRef("");
@@ -46,6 +47,7 @@ export default function Step2() {
     const pbMemId = pbno ?? memid ?? "";
 
     const handleBirhtdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCalendarOpen(true);
         const input = e.target.value;
         const inputPrev = birthdatePrevRef.current;
 
@@ -108,6 +110,15 @@ export default function Step2() {
         }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            birthdateRef.current?.blur();
+            handleSignBtn(birthdate, birthdateInput);
+            setCalendarOpen(false);
+        }
+    };
+
     return (
         <div className="grid gap-2 pt-0 pb-0 sm:px-25">
             <h1
@@ -141,7 +152,10 @@ export default function Step2() {
                 <div className="*:not-first:mt-2">
                     <Label htmlFor="birthdate">Birthdate</Label>
                     <div className="relative">
-                        <Popover>
+                        <Popover
+                            open={calendarOpen}
+                            onOpenChange={setCalendarOpen}
+                        >
                             <PopoverTrigger asChild>
                                 <Input
                                     ref={birthdateRef}
@@ -150,6 +164,7 @@ export default function Step2() {
                                     type="text"
                                     maxLength={10}
                                     onInput={handleBirhtdate}
+                                    onKeyDown={handleKeyDown}
                                     value={birthdateInput}
                                     className="peer pe-9"
                                 />

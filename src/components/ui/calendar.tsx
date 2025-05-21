@@ -28,7 +28,7 @@ export function Calendar({ ...props }: React.ComponentProps<typeof DayPicker>) {
                             <select
                                 defaultValue={props.value}
                                 onChange={props.onChange}
-                                className="peer appearance-none rounded-lg border p-1 pe-7 text-base shadow-2xs"
+                                className="peer cursor-pointer appearance-none rounded-lg border p-1 pe-7 text-base shadow-2xs"
                             >
                                 {props.options?.map((option, id) => (
                                     <option key={id} value={option.value}>
@@ -36,7 +36,7 @@ export function Calendar({ ...props }: React.ComponentProps<typeof DayPicker>) {
                                     </option>
                                 ))}
                             </select>
-                            <div className="absolute inset-y-0 end-0 flex items-center justify-center px-1">
+                            <div className="absolute inset-y-0 end-0 flex cursor-pointer items-center justify-center px-1">
                                 <ChevronDownIcon
                                     size={20}
                                     className="text-primary"
