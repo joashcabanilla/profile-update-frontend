@@ -17,6 +17,8 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
                     "text-muted-foreground/70 file:border-input file:text-foreground p-0 pr-3 italic file:me-3 file:h-full file:border-0 file:border-r file:border-solid file:bg-transparent file:px-3 file:text-sm file:font-medium file:not-italic",
                 type === "text" &&
                     "h-12 rounded-2xl border-2 indent-0 text-base font-bold shadow-none disabled:opacity-100",
+                type === "email" &&
+                    "h-12 rounded-2xl border-2 indent-0 text-base font-bold shadow-none disabled:opacity-100",
                 className
             )}
             {...props}

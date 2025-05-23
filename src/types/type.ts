@@ -50,8 +50,15 @@ export interface mainLayoutProps {
 
 export type updateProfileInput = {
     id: string;
+    type: string;
     label: string;
     value?: string;
     class?: string;
+    clearClass?: string;
     disabled?: boolean;
+    maxLength?: number;
+    required?: boolean;
+    ref?: React.Ref<HTMLInputElement>;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClear?: () => void;
 };

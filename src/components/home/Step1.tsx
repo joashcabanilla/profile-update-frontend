@@ -49,7 +49,7 @@ export default function Step1() {
                         size: "md",
                         weight: "sm"
                     }),
-                    "border-primary bg-accent text-accent-foreground grid gap-2 rounded-2xl border-2 border-double p-2 [&_strong]:font-extrabold"
+                    "border-primary bg-primary/3 text-accent-foreground grid gap-2 rounded-2xl border-2 border-double p-2 [&_strong]:font-extrabold"
                 )}
             >
                 <p>
