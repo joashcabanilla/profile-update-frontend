@@ -170,6 +170,8 @@ export default function Step2() {
                                 />
                             </PopoverTrigger>
                             <PopoverContent
+                                avoidCollisions={false}
+                                side="top"
                                 onOpenAutoFocus={(event: Event) => {
                                     event.preventDefault();
                                     if (birthdateInput.length == 10) {
