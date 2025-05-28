@@ -15,6 +15,20 @@
       "when": 1746841117678,
       "tag": "0001_volatile_psynapse",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1748242561167,
+      "tag": "0002_shiny_queen_noir",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1748309410141,
+      "tag": "0003_new_iron_patriot",
+      "breakpoints": true
     }
   ]
 }

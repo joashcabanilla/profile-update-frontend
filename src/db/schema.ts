@@ -21,3 +21,13 @@ export const membersTable = mysqlTable("members", {
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
 });
+
+export const usersTable = mysqlTable("users", {
+    id: bigint("id", { mode: "bigint" }).autoincrement().primaryKey(),
+    name: varchar("name", { length: 255 }),
+    username: varchar("username", { length: 255 }),
+    password: varchar("password", { length: 255 }),
+    deletedAt: timestamp("deleted_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
+});
