@@ -24,9 +24,9 @@ export const membersTable = mysqlTable("members", {
 
 export const usersTable = mysqlTable("users", {
     id: bigint("id", { mode: "bigint" }).autoincrement().primaryKey(),
-    name: varchar("name", { length: 255 }),
-    username: varchar("username", { length: 255 }),
-    password: varchar("password", { length: 255 }),
+    name: varchar("name", { length: 255 }).notNull(),
+    username: varchar("username", { length: 255 }).notNull(),
+    password: varchar("password", { length: 255 }).notNull(),
     deletedAt: timestamp("deleted_at"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
