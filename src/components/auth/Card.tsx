@@ -2,6 +2,8 @@
 
 //hooks
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 //assets
 import Logo from "@/assets/images/logo1.png";
@@ -20,6 +22,15 @@ interface CardWarpperProps {
 }
 
 export const CardWrapper = ({ children }: CardWarpperProps) => {
+    const { resolvedTheme } = useTheme();
+    const [theme, setTheme] = useState<undefined | string>(undefined);
+
+    useEffect(() => {
+        if (resolvedTheme) {
+            setTheme(resolvedTheme);
+        }
+    }, [resolvedTheme]);
+
     return (
         <Card className="w-[400px] p-4 shadow-2xl">
             <CardHeader className="px-0">
@@ -32,11 +43,13 @@ export const CardWrapper = ({ children }: CardWarpperProps) => {
                         className="w-8/12 max-w-[300px]"
                     />
                     <div className="flex items-center">
-                        <SwitchTheme />
+                        <SwitchTheme resolvedTheme={theme} />
                     </div>
                 </div>
             </CardHeader>
             <CardContent className="px-0">{children}</CardContent>
+            <CardFooter>
+            </CardFooter>
         </Card>
     );
 };

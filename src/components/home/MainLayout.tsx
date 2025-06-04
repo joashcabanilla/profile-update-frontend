@@ -2,7 +2,8 @@
 
 //hooks
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 //context global state
 import { useMemberContext } from "@/context/member-context";
@@ -27,15 +28,20 @@ import { mainLayoutProps } from "@/types/type";
 
 export default function MainLayout({ member }: mainLayoutProps) {
     const { setMember, step } = useMemberContext();
-    const activeStep  = {
+    const { resolvedTheme } = useTheme();
+    const [theme, setTheme] = useState<undefined | string>(undefined);
+
+    const activeStep = {
         1: <Step1 />,
         2: <Step2 />,
         3: <Step3 />
     }[step];
-
     useEffect(() => {
         setMember(member);
-    },[setMember, member]);
+        if (resolvedTheme) {
+            setTheme(resolvedTheme);
+        }
+    }, [setMember, member, resolvedTheme]);
 
     return (
         <div className={container()}>
@@ -56,7 +62,7 @@ export default function MainLayout({ member }: mainLayoutProps) {
                             className="w-8/12 max-w-[300px]"
                         />
                         <div className="flex items-center">
-                            <SwitchTheme />
+                            <SwitchTheme resolvedTheme={theme} />
                         </div>
                     </div>
                     <h1

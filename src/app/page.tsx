@@ -9,27 +9,27 @@ import MainLayout from "@/components/home/MainLayout";
 import SkeletonCard from "@/components/home/SkeletonCard";
 
 //types
-import { Member } from "@/types/type";
+// import { Member } from "@/types/type";
 
 export default async function Page() {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-    const getMember = await fetch(`${baseUrl}/api/member`, {
-        cache: "no-store"
-    });
+    // const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    // const getMember = await fetch(`${baseUrl}/api/member`, {
+    //     cache: "no-store"
+    // });
 
-    let member: Member[] = [];
+    // let member: Member[] = [];
 
-    if (!getMember.ok) {
-        throw new Error("Failed to fetch member data");
-    } else {
-        const data = await getMember.json();
-        member = JSON.parse(data);
-    }
+    // if (!getMember.ok) {
+    //     throw new Error("Failed to fetch member data");
+    // } else {
+    //     const data = await getMember.json();
+    //     member = JSON.parse(data);
+    // }
 
     return (
         <Suspense fallback={<SkeletonCard />}>
             <MemberContextProvider>
-                <MainLayout member={member} />
+                <MainLayout member={[]} />
             </MemberContextProvider>
         </Suspense>
     );
