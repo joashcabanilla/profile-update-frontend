@@ -53,7 +53,7 @@ export default function MainLayout({ member }: mainLayoutProps) {
                             alt="Logo"
                             draggable={false}
                             priority
-                            className="w-9/12 max-w-[300px]"
+                            className="w-8/12 max-w-[300px]"
                         />
                         <div className="flex items-center">
                             <SwitchTheme />

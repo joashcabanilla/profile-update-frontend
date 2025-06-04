@@ -4,17 +4,13 @@ import { useId, useState } from "react";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-//context global state
-import { useThemeContext } from "@/context/theme-context";
-
 //shadcn ui
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
 export default function SwitchTheme() {
     const id = useId();
-    const { theme } = useThemeContext();
-    const [checked, setChecked] = useState<boolean>(theme === "light");
+    const [checked, setChecked] = useState<boolean>(true);
     const { setTheme } = useTheme();
 
     const toggleTheme = (checked: boolean) => {
@@ -26,6 +22,7 @@ export default function SwitchTheme() {
             <div className="relative inline-grid h-9 grid-cols-[1fr_1fr] items-center text-sm font-medium">
                 <Switch
                     id={id}
+                    name="switchTheme"
                     checked={checked}
                     onCheckedChange={toggleTheme}
                     className="peer data-[state=checked]:bg-input/50 data-[state=unchecked]:bg-input/50 absolute inset-0 h-[inherit] w-auto shadow [&_span]:h-full [&_span]:w-1/2 [&_span]:transition-transform [&_span]:duration-300 [&_span]:ease-[cubic-bezier(0.16,1,0.3,1)] [&_span]:data-[state=checked]:translate-x-full [&_span]:data-[state=checked]:rtl:-translate-x-full"

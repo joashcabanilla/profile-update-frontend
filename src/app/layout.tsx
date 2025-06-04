@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import ThemeContextProvider from "@/context/theme-context";
 import ResponsiveToaster from "@/components/ResponsiveToaster";
 
 //CSS and fonts
@@ -34,7 +33,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <ThemeContextProvider>{children}</ThemeContextProvider>
+                    {children}
                     <ResponsiveToaster />
                 </ThemeProvider>
             </body>
