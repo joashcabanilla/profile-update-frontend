@@ -49,6 +49,7 @@ export const CardWrapper = ({ children }: CardWarpperProps) => {
             </CardHeader>
             <CardContent className="px-0">{children}</CardContent>
             <CardFooter>
+                
             </CardFooter>
         </Card>
     );
