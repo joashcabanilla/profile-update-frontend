@@ -24,8 +24,7 @@ export default function AccountCard() {
                 <p className="text-center">Record not found.</p>
             ) : (
                 searchedMember.map((data) => {
-                    const { id, pbno, memid, firstname, middlename, lastname } =
-                        data;
+                    const { id, pbno, memid, firstname, middlename, lastname } = data;
                     let name = `${firstname} ${middlename ?? ""} ${lastname}`;
                     name = name.replace("�", "ñ");
                     const pbnoData = pbno || "No Data";
@@ -46,23 +45,13 @@ export default function AccountCard() {
                                 </h5>
                                 <h5>
                                     PB#:{" "}
-                                    <strong
-                                        className={cn(
-                                            pbnoData === "No Data" &&
-                                                "!text-foreground/70"
-                                        )}
-                                    >
+                                    <strong className={cn(pbnoData === "No Data" && "!text-foreground/70")}>
                                         {pbnoData}
                                     </strong>
                                 </h5>
                                 <h5>
                                     Member ID:{" "}
-                                    <strong
-                                        className={cn(
-                                            memidData === "No Data" &&
-                                                "!text-foreground/70"
-                                        )}
-                                    >
+                                    <strong className={cn(memidData === "No Data" && "!text-foreground/70")}>
                                         {memidData}
                                     </strong>
                                 </h5>
@@ -72,7 +61,7 @@ export default function AccountCard() {
                                     data-memberid={id}
                                     type="button"
                                     size="xl"
-                                    className="w-full text-base font-extrabold sm:w-fit sm:text-lg cursor-pointer"
+                                    className="w-full cursor-pointer text-base font-extrabold sm:w-fit sm:text-lg"
                                     onClick={handleClick}
                                 >
                                     Sign In

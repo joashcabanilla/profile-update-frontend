@@ -24,13 +24,7 @@ import { useMemberContext } from "@/context/member-context";
 import { Member, updateProfileInput } from "@/types/type";
 
 export default function Step3() {
-    const {
-        memberId,
-        searchedMember,
-        setStep,
-        stepCompleted,
-        setStepCompleted
-    } = useMemberContext();
+    const { memberId, searchedMember, setStep, stepCompleted, setStepCompleted } = useMemberContext();
     const profileFormRef = useRef<HTMLFormElement>(null);
     const [cpnumberRef, emailRef, tinRef] = [
         useRef<HTMLInputElement>(null),
@@ -42,12 +36,9 @@ export default function Step3() {
     const [emailState, setEmailState] = useState<string>("");
     const [tinState, setTinState] = useState<string>("");
 
-    const memberData: Member[] = searchedMember.filter(
-        (data) => data.id == memberId && data
-    );
+    const memberData: Member[] = searchedMember.filter((data) => data.id == memberId && data);
 
-    const { id, memid, pbno, firstname, middlename, lastname, branch } =
-        memberData[0];
+    const { id, memid, pbno, firstname, middlename, lastname, branch } = memberData[0];
 
     const memberInfo: updateProfileInput[][] = [
         [
@@ -91,14 +82,11 @@ export default function Step3() {
                 ref: cpnumberRef,
                 value: cpnumberState,
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    /^\d*$/.test(e.target.value) &&
-                    setCpnumberState(e.target.value),
+                    /^\d*$/.test(e.target.value) && setCpnumberState(e.target.value),
                 maxLength: 11,
                 required: true,
                 onClear: () => setCpnumberState(""),
-                clearClass: cpnumberState
-                    ? "cursor-pointer opacity-100"
-                    : "pointer-events-none opacity-0"
+                clearClass: cpnumberState ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
             },
             {
                 id: "email",
@@ -108,12 +96,9 @@ export default function Step3() {
                 ref: emailRef,
                 value: emailState,
                 required: true,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    setEmailState(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmailState(e.target.value),
                 onClear: () => setEmailState(""),
-                clearClass: emailState
-                    ? "cursor-pointer opacity-100"
-                    : "pointer-events-none opacity-0"
+                clearClass: emailState ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
             },
             {
                 id: "tin",
@@ -123,19 +108,14 @@ export default function Step3() {
                 ref: tinRef,
                 value: tinState,
                 required: false,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    setTinState(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => setTinState(e.target.value),
                 onClear: () => setTinState(""),
-                clearClass: tinState
-                    ? "cursor-pointer opacity-100"
-                    : "pointer-events-none opacity-0"
+                clearClass: tinState ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
             }
         ]
     ];
 
-    const handleProfileForm = async (
-        e: React.FormEvent<HTMLFormElement>
-    ): Promise<void> => {
+    const handleProfileForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
 
         const payload = {
@@ -171,42 +151,20 @@ export default function Step3() {
             >
                 Update your information
             </h1>
-            <div
-                className={cn(
-                    card({ variant: "signIn" }),
-                    "grid gap-4 [&_label]:text-base [&_label]:font-bold"
-                )}
-            >
-                <form
-                    ref={profileFormRef}
-                    onSubmit={handleProfileForm}
-                    className="grid gap-4"
-                >
+            <div className={cn(card({ variant: "signIn" }), "grid gap-4 [&_label]:text-base [&_label]:font-bold")}>
+                <form ref={profileFormRef} onSubmit={handleProfileForm} className="grid gap-4">
                     {memberInfo.map((component, index) =>
                         index === 0 ? (
-                            <div
-                                className="grid gap-4 sm:grid-cols-2"
-                                key={index}
-                            >
+                            <div className="grid gap-4 sm:grid-cols-2" key={index}>
                                 {component.map((field) => (
-                                    <div
-                                        key={field.id}
-                                        className="*:not-first:mt-2"
-                                    >
-                                        <Label htmlFor={field.id}>
-                                            {field.label}
-                                        </Label>
+                                    <div key={field.id} className="*:not-first:mt-2">
+                                        <Label htmlFor={field.id}>{field.label}</Label>
                                         <Input
                                             id={field.id}
                                             placeholder={field.label}
                                             type={field.type}
                                             value={field.value}
-                                            className={cn(
-                                                field.class,
-                                                field.disabled
-                                                    ? "bg-primary/3"
-                                                    : ""
-                                            )}
+                                            className={cn(field.class, field.disabled ? "bg-primary/3" : "")}
                                             disabled={field.disabled}
                                         />
                                     </div>
@@ -215,23 +173,14 @@ export default function Step3() {
                         ) : (
                             <div className="grid grid-rows-5 gap-4" key={index}>
                                 {component.map((field) => (
-                                    <div
-                                        key={field.id}
-                                        className="*:not-first:mt-2"
-                                    >
+                                    <div key={field.id} className="*:not-first:mt-2">
                                         <Label
                                             htmlFor={field.id}
-                                            className={cn(
-                                                field.required &&
-                                                    "flex items-center gap-1"
-                                            )}
+                                            className={cn(field.required && "flex items-center gap-1")}
                                         >
                                             {field.label}
                                             {field.required && (
-                                                <Badge
-                                                    variant="outline"
-                                                    className="text-primary"
-                                                >
+                                                <Badge variant="outline" className="text-primary">
                                                     required
                                                 </Badge>
                                             )}
@@ -241,28 +190,17 @@ export default function Step3() {
                                             <Input
                                                 id={field.id}
                                                 ref={field.ref}
-                                                placeholder={
-                                                    field.id != "cpnumber"
-                                                        ? field.label
-                                                        : "ex.09xxxxxxxxx"
-                                                }
+                                                placeholder={field.id != "cpnumber" ? field.label : "ex.09xxxxxxxxx"}
                                                 type={field.type}
                                                 value={field.value}
                                                 disabled={field.disabled}
                                                 className={cn(
-                                                    field.disabled
-                                                        ? "bg-primary/3"
-                                                        : "",
-                                                    field.id == "cpnumber"
-                                                        ? "placeholder:font-jetbrains"
-                                                        : "",
+                                                    field.disabled ? "bg-primary/3" : "",
+                                                    field.id == "cpnumber" ? "placeholder:font-jetbrains" : "",
                                                     "peer pe-9"
                                                 )}
-                                                onKeyDown={(
-                                                    e: React.KeyboardEvent<HTMLInputElement>
-                                                ) =>
-                                                    e.key === "Enter" &&
-                                                    profileFormRef.current?.requestSubmit()
+                                                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+                                                    e.key === "Enter" && profileFormRef.current?.requestSubmit()
                                                 }
                                                 required={field.required}
                                                 maxLength={field.maxLength}
@@ -279,10 +217,7 @@ export default function Step3() {
                                                     )}
                                                     onClick={field.onClear}
                                                 >
-                                                    <CircleX
-                                                        size={20}
-                                                        aria-hidden="true"
-                                                    />
+                                                    <CircleX size={20} aria-hidden="true" />
                                                 </a>
                                             )}
                                         </div>

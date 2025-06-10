@@ -15,9 +15,7 @@ export const testConnection = () => {
     poolConnection
         .getConnection()
         .then(() => console.log("Connected to MySQL"))
-        .catch((err) =>
-            console.error(" onnection error:", err, process.env.DB_URL)
-        );
+        .catch((err) => console.error(" onnection error:", err, process.env.DB_URL));
 };
 
 export const closeConnection = () => {

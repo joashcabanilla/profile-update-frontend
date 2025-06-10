@@ -44,14 +44,10 @@ export default function StepIndicator() {
                         <StepperTrigger className="pointer-events-none rounded max-md:flex-col">
                             <StepperIndicator />
                             <div className="text-center md:text-left">
-                                <StepperTitle className="font-poppins font-bold">
-                                    {title}
-                                </StepperTitle>
+                                <StepperTitle className="font-poppins font-bold">{title}</StepperTitle>
                             </div>
                         </StepperTrigger>
-                        {step < steps.length && (
-                            <StepperSeparator className="max-md:mt-3.5 md:mx-4" />
-                        )}
+                        {step < steps.length && <StepperSeparator className="max-md:mt-3.5 md:mx-4" />}
                     </StepperItem>
                 ))}
             </Stepper>

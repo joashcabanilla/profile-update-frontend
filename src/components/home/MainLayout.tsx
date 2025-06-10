@@ -46,21 +46,10 @@ export default function MainLayout({ member }: mainLayoutProps) {
     return (
         <div className={container()}>
             <Terms />
-            <div
-                className={cn(
-                    card({ align: "center", variant: "maxWidth650px" }),
-                    "grid gap-10"
-                )}
-            >
+            <div className={cn(card({ align: "center", variant: "maxWidth650px" }), "grid gap-10")}>
                 <div className="grid gap-4">
                     <div className="flex w-full items-center justify-between">
-                        <Image
-                            src={Logo}
-                            alt="Logo"
-                            draggable={false}
-                            priority
-                            className="w-8/12 max-w-[300px]"
-                        />
+                        <Image src={Logo} alt="Logo" draggable={false} priority className="w-8/12 max-w-[300px]" />
                         <div className="flex items-center">
                             <SwitchTheme resolvedTheme={theme} />
                         </div>

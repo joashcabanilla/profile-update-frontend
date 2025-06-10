@@ -5,12 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function SkeletonCard() {
     return (
         <div className={container()}>
-            <div
-                className={cn(
-                    card({ align: "center", variant: "maxWidth650px" }),
-                    "grid gap-10"
-                )}
-            >
+            <div className={cn(card({ align: "center", variant: "maxWidth650px" }), "grid gap-10")}>
                 <div className="grid gap-4">
                     <div className="flex w-full items-center justify-between">
                         <Skeleton className="h-[70px] w-9/12 max-w-[300px]" />
@@ -25,7 +20,7 @@ export default function SkeletonCard() {
                         <Skeleton className="h-[35px] w-4/12" />
                         <div className="grid gap-2">
                             <Skeleton className="h-[45px] w-full" />
-                            <Skeleton className="h-80 sm:h-60 w-full" />
+                            <Skeleton className="h-80 w-full sm:h-60" />
                         </div>
                     </div>
                 </div>

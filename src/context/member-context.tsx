@@ -4,18 +4,12 @@ import { MemberContext, MemberContextProviderProps } from "@/types/type";
 
 const memberContext = createContext<MemberContext | null>(null);
 
-export default function MemberContextProvider({
-    children
-}: MemberContextProviderProps) {
+export default function MemberContextProvider({ children }: MemberContextProviderProps) {
     const [member, setMember] = useState<MemberContext["member"]>([]);
-    const [searchedMember, setSearchedMember] = useState<
-        MemberContext["searchedMember"]
-    >([]);
+    const [searchedMember, setSearchedMember] = useState<MemberContext["searchedMember"]>([]);
     const [step, setStep] = useState<MemberContext["step"]>(1);
-    const [stepCompleted, setStepCompleted] =
-        useState<MemberContext["stepCompleted"]>(false);
-    const [memberId, setMemberId] =
-        useState<MemberContext["memberId"]>(undefined);
+    const [stepCompleted, setStepCompleted] = useState<MemberContext["stepCompleted"]>(false);
+    const [memberId, setMemberId] = useState<MemberContext["memberId"]>(undefined);
 
     return (
         <memberContext.Provider
@@ -40,9 +34,7 @@ export default function MemberContextProvider({
 export function useMemberContext() {
     const context = useContext(memberContext);
     if (!context) {
-        throw new Error(
-            "useMemberContext must be used within MemberContextProvider"
-        );
+        throw new Error("useMemberContext must be used within MemberContextProvider");
     }
     return context;
 }

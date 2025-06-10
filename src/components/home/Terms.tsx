@@ -22,8 +22,7 @@ export default function Terms() {
         const content = contentRef.current;
         if (!content) return;
 
-        const scrollPercentage =
-            content.scrollTop / (content.scrollHeight - content.clientHeight);
+        const scrollPercentage = content.scrollTop / (content.scrollHeight - content.clientHeight);
         if (scrollPercentage >= 0.99 && !hasReadToBottom) {
             setHasReadToBottom(true);
         }
@@ -53,87 +52,35 @@ export default function Terms() {
                     <DialogTitle className="font-jetbrains text-foreground border-b px-6 py-4 text-base">
                         Terms & Conditions
                     </DialogTitle>
-                    <div
-                        ref={contentRef}
-                        onScroll={handleScroll}
-                        className="overflow-y-auto"
-                    >
+                    <div ref={contentRef} onScroll={handleScroll} className="overflow-y-auto">
                         <DialogDescription asChild>
                             <div className="px-6 py-4">
                                 <div className="[&_strong]:text-foreground [&_strong]:font-jetbrains space-y-4 [&_strong]:font-extrabold">
                                     <div className="space-y-4">
                                         <div className="grid gap-2 space-y-1">
                                             <p>
-                                                <strong>
-                                                    Acceptance of Terms
-                                                </strong>
+                                                <strong>Acceptance of Terms</strong>
                                             </p>
                                             <div className="grid gap-6">
-                                                <p
-                                                    className={text(
-                                                        defaultTextProps
-                                                    )}
-                                                >
-                                                    By filling out the{" "}
-                                                    <strong>
-                                                        Member Profile Form
-                                                    </strong>
-                                                    , you are consenting to the
-                                                    collection, processing, and
-                                                    use of your information in
-                                                    accordance with{" "}
-                                                    <strong>
-                                                        Republic Act 10173
-                                                    </strong>
-                                                    , or the{" "}
-                                                    <strong>
-                                                        Data Privacy Act of
-                                                        2012
-                                                    </strong>.
+                                                <p className={text(defaultTextProps)}>
+                                                    By filling out the <strong>Member Profile Form</strong>, you are
+                                                    consenting to the collection, processing, and use of your
+                                                    information in accordance with <strong>Republic Act 10173</strong>,
+                                                    or the <strong>Data Privacy Act of 2012</strong>.
                                                 </p>
 
-                                                <p
-                                                    className={text(
-                                                        defaultTextProps
-                                                    )}
-                                                >
-                                                    A{" "}
-                                                    <strong>
-                                                        member&apos;s personal
-                                                        data
-                                                    </strong>{" "}
-                                                    obtained from this portal is
-                                                    entered into and stored
-                                                    within the company&apos;s
-                                                    authorized information and
-                                                    communications system, and
-                                                    will be accessed only by
-                                                    authorized personnel from
-                                                    the{" "}
-                                                    <strong>
-                                                        MIS Department
-                                                    </strong>.
+                                                <p className={text(defaultTextProps)}>
+                                                    A <strong>member&apos;s personal data</strong> obtained from this
+                                                    portal is entered into and stored within the company&apos;s
+                                                    authorized information and communications system, and will be
+                                                    accessed only by authorized personnel from the{" "}
+                                                    <strong>MIS Department</strong>.
                                                 </p>
 
-                                                <p
-                                                    className={text(
-                                                        defaultTextProps
-                                                    )}
-                                                >
-                                                    The{" "}
-                                                    <strong>
-                                                        MIS Department
-                                                    </strong>{" "}
-                                                    has instituted appropriate
-                                                    organizational, technical,
-                                                    and physical security
-                                                    measures to ensure the
-                                                    protection of the{" "}
-                                                    <strong>
-                                                        member&apos;s personal
-                                                        data
-                                                    </strong>
-                                                    .
+                                                <p className={text(defaultTextProps)}>
+                                                    The <strong>MIS Department</strong> has instituted appropriate
+                                                    organizational, technical, and physical security measures to ensure
+                                                    the protection of the <strong>member&apos;s personal data</strong>.
                                                 </p>
                                             </div>
                                         </div>
@@ -148,11 +95,7 @@ export default function Terms() {
                         Read all terms before accepting.
                     </span>
                     <DialogClose asChild>
-                        <Button
-                            type="button"
-                            size={"lg"}
-                            className="font-jetbrains font-extrabold cursor-pointer"
-                        >
+                        <Button type="button" size={"lg"} className="font-jetbrains cursor-pointer font-extrabold">
                             I agree
                         </Button>
                     </DialogClose>

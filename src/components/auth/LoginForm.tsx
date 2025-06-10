@@ -20,17 +20,8 @@ import { CircleX, ShieldUser, EyeClosed, Eye } from "lucide-react";
 import { CardWrapper as Card } from "@/components/auth/Card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
-} from "@/components/ui/form";
-
-
-
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
 export const LoginForm = () => {
     const form = useForm<z.infer<typeof LoginSchema>>({
@@ -46,19 +37,27 @@ export const LoginForm = () => {
     return (
         <div className="flex h-full items-center justify-center p-4 sm:p-6">
             <Card>
-                <h1 className="font-poppins font-bold text-lg text-center">Sign into your account</h1>
+                <h1 className="font-poppins text-center text-lg font-bold">Sign into your account</h1>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(() => { })} className="w-full space-y-6">
+                    <form onSubmit={form.handleSubmit(() => {})} className="w-full space-y-6">
                         <div className="space-y-4">
                             <FormField
                                 control={form.control}
                                 name="username"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="font-bold text-base">Username</FormLabel>
+                                        <FormLabel className="text-base font-bold">Username</FormLabel>
                                         <div className="relative">
                                             <FormControl>
-                                                <Input {...field} ref={usernameRef} placeholder="Username" type="text" autoComplete="false" name="username" className="font-normal text-base h-10 peer ps-9 pe-9 indent-1 rounded-xl" />
+                                                <Input
+                                                    {...field}
+                                                    ref={usernameRef}
+                                                    placeholder="Username"
+                                                    type="text"
+                                                    autoComplete="false"
+                                                    name="username"
+                                                    className="peer h-10 rounded-xl ps-9 pe-9 indent-1 text-base font-normal"
+                                                />
                                             </FormControl>
                                             <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-2 peer-disabled:opacity-50">
                                                 <ShieldUser size={25} />
@@ -91,22 +90,40 @@ export const LoginForm = () => {
                                 name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="font-bold text-base">Password</FormLabel>
+                                        <FormLabel className="text-base font-bold">Password</FormLabel>
                                         <div className="relative">
                                             <FormControl>
-                                                <Input {...field} ref={passwordRef} placeholder="Password" type={showPassword ? "text" : "password"} autoComplete="false" name="password" className="font-normal text-base h-10 peer ps-9 pe-9 indent-1 rounded-xl" />
+                                                <Input
+                                                    {...field}
+                                                    ref={passwordRef}
+                                                    placeholder="Password"
+                                                    type={showPassword ? "text" : "password"}
+                                                    autoComplete="false"
+                                                    name="password"
+                                                    className="peer h-10 rounded-xl ps-9 pe-9 indent-1 text-base font-normal"
+                                                />
                                             </FormControl>
                                             <div className="text-muted-foreground/80 absolute inset-y-0 start-0 flex items-center justify-center ps-2 peer-disabled:opacity-50">
-                                                <a className="cursor-pointer" onClick={() => {
-                                                    const passwordType = passwordRef.current?.type;
-                                                    if (passwordType === "password") {
-                                                        setShowPassword(true);
-                                                    } else {
-                                                        setShowPassword(false);
-                                                    }
-                                                }}>
-                                                    {showPassword ? <Eye size={25} /> : <EyeClosed size={25} />}
-                                                </a>
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild>
+                                                        <a
+                                                            className="cursor-pointer"
+                                                            onClick={() => {
+                                                                const passwordType = passwordRef.current?.type;
+                                                                if (passwordType === "password") {
+                                                                    setShowPassword(true);
+                                                                } else {
+                                                                    setShowPassword(false);
+                                                                }
+                                                            }}
+                                                        >
+                                                            {showPassword ? <Eye size={25} /> : <EyeClosed size={25} />}
+                                                        </a>
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <p>{showPassword ? "Hide Password" : "Show Password"}</p>
+                                                    </TooltipContent>
+                                                </Tooltip>
                                             </div>
                                             <a
                                                 className={cn(
@@ -131,11 +148,7 @@ export const LoginForm = () => {
                                 )}
                             />
                         </div>
-                        <Button
-                            type="submit"
-                            className="cursor-pointer text-base font-bold float-right"
-                            size="lg"
-                        >
+                        <Button type="submit" className="float-right cursor-pointer text-base font-bold" size="lg">
                             Sign In
                         </Button>
                     </form>

@@ -16,11 +16,7 @@ import { CircleX } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent
-} from "@/components/ui/popover";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 
 //context global state
@@ -39,9 +35,7 @@ export default function Step2() {
     const birthdateRef = useRef<HTMLInputElement>(null);
     const birthdatePrevRef = useRef("");
 
-    const memberData: Member[] = searchedMember.filter(
-        (data) => data.id == memberId && data
-    );
+    const memberData: Member[] = searchedMember.filter((data) => data.id == memberId && data);
 
     const { memid, pbno, birthdate } = memberData[0];
     const pbMemId = pbno ?? memid ?? "";
@@ -92,10 +86,7 @@ export default function Step2() {
         }
     };
 
-    const handleSignBtn = (
-        memberBirthdate: Date,
-        birthdate: string
-    ): undefined => {
+    const handleSignBtn = (memberBirthdate: Date, birthdate: string): undefined => {
         const memberData = format(memberBirthdate, "MM/dd/yyyy");
 
         if (birthdate === memberData) {
@@ -133,29 +124,15 @@ export default function Step2() {
             >
                 Sign into your account
             </h1>
-            <div
-                className={cn(
-                    card({ variant: "signIn" }),
-                    "grid gap-4 [&_label]:text-base [&_label]:font-bold"
-                )}
-            >
+            <div className={cn(card({ variant: "signIn" }), "grid gap-4 [&_label]:text-base [&_label]:font-bold")}>
                 <div className="*:not-first:mt-2">
                     <Label htmlFor="pbMemId">PB# / Member ID</Label>
-                    <Input
-                        id="pbMemId"
-                        placeholder="PB# / Member ID"
-                        type="text"
-                        disabled
-                        value={pbMemId}
-                    />
+                    <Input id="pbMemId" placeholder="PB# / Member ID" type="text" disabled value={pbMemId} />
                 </div>
                 <div className="*:not-first:mt-2">
                     <Label htmlFor="birthdate">Birthdate</Label>
                     <div className="relative">
-                        <Popover
-                            open={calendarOpen}
-                            onOpenChange={setCalendarOpen}
-                        >
+                        <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
                             <PopoverTrigger asChild>
                                 <Input
                                     ref={birthdateRef}
@@ -175,11 +152,7 @@ export default function Step2() {
                                 onOpenAutoFocus={(event: Event) => {
                                     event.preventDefault();
                                     if (birthdateInput.length == 10) {
-                                        const parsedDate = parse(
-                                            birthdateInput,
-                                            "MM/dd/yyyy",
-                                            new Date()
-                                        );
+                                        const parsedDate = parse(birthdateInput, "MM/dd/yyyy", new Date());
                                         if (isValid(parsedDate)) {
                                             setMonth(parsedDate);
                                             setSelectedDate(parsedDate);
@@ -209,9 +182,7 @@ export default function Step2() {
                                 button({
                                     variant: "closeIcon"
                                 }),
-                                birthdateInput
-                                    ? "cursor-pointer opacity-100"
-                                    : "pointer-events-none opacity-0"
+                                birthdateInput ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
                             )}
                             aria-label="Submit search"
                             type="submit"

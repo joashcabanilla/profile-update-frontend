@@ -27,9 +27,7 @@ export default function ProfileUpdate() {
                         "border-primary bg-primary/3 text-primary rounded-2xl border-2 border-double p-2"
                     )}
                 >
-                    <p>
-                        Thank you! Your profile has been successfully updated.
-                    </p>
+                    <p>Thank you! Your profile has been successfully updated.</p>
                 </div>
                 <div className="mt-2 flex items-center justify-center">
                     <Button

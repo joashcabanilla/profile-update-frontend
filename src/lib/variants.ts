@@ -11,11 +11,10 @@ export const card = tv({
             center: "mx-auto mt-4 mb-4 sm:mt-0 sm:mb-0"
         },
         variant: {
-            maxWidth650px:
-                "max-w-[650px] rounded-2xl border p-4 shadow-2xl sm:p-6",
+            maxWidth650px: "max-w-[650px] rounded-2xl border p-4 shadow-2xl sm:p-6",
             searchAccount:
                 "bg-accent/20 text-accent-foreground w-full rounded-lg border p-2 text-lg font-bold shadow-xs",
-            signIn: "w-full border-2 shadow rounded-lg p-4"
+            signIn: "w-full rounded-lg border-2 p-4 shadow"
         }
     }
 });

@@ -53,17 +53,13 @@ export default function Step1() {
                 )}
             >
                 <p>
-                    Example format for{" "}
-                    <strong>PB number &ldquo;001234&ldquo; no Dash(-)</strong>,
-                    kapag may letra naman <strong>&ldquo;N001234&ldquo;</strong>{" "}
-                    at kung{" "}
-                    <strong>Member ID &ldquo;0010000000123456&ldquo;</strong>,
-                    ang i lalagay lang ang
+                    Example format for <strong>PB number &ldquo;001234&ldquo; no Dash(-)</strong>, kapag may letra naman{" "}
+                    <strong>&ldquo;N001234&ldquo;</strong> at kung{" "}
+                    <strong>Member ID &ldquo;0010000000123456&ldquo;</strong>, ang i lalagay lang ang
                     <strong> 123456</strong>
                 </p>
                 <p>
-                    <strong>Note:</strong>{" "}
-                    <strong>Priority ang Old Passbook sa pag verify.</strong>
+                    <strong>Note:</strong> <strong>Priority ang Old Passbook sa pag verify.</strong>
                 </p>
             </div>
 
@@ -101,9 +97,7 @@ export default function Step1() {
                                     button({
                                         variant: "closeIcon"
                                     }),
-                                    searchInput
-                                        ? "cursor-pointer opacity-100"
-                                        : "pointer-events-none opacity-0"
+                                    searchInput ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
                                 )}
                                 aria-label="Submit search"
                                 type="submit"
@@ -115,17 +109,12 @@ export default function Step1() {
                             </button>
                         </div>
                     </div>
-                    <ScrollArea
-                        type="always"
-                        className="h-80 w-full rounded-lg border-2 shadow sm:h-60"
-                    >
+                    <ScrollArea type="always" className="h-80 w-full rounded-lg border-2 shadow sm:h-60">
                         <div className="grid gap-4 p-4 sm:p-6">
                             {!searchInput ? (
                                 <p className="text-muted-foreground font-jetbrains text-center text-sm italic">
-                                    This section shows your search results. If
-                                    you see multiple accounts due to duplicate
-                                    PB# or Member ID, select your own account
-                                    from the list.
+                                    This section shows your search results. If you see multiple accounts due to
+                                    duplicate PB# or Member ID, select your own account from the list.
                                 </p>
                             ) : (
                                 <AccountCard />

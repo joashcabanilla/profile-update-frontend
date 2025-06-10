@@ -1,10 +1,4 @@
-import {
-    date,
-    mysqlTable,
-    bigint,
-    varchar,
-    timestamp
-} from "drizzle-orm/mysql-core";
+import { date, mysqlTable, bigint, varchar, timestamp } from "drizzle-orm/mysql-core";
 
 export const membersTable = mysqlTable("members", {
     id: bigint("id", { mode: "bigint" }).autoincrement().primaryKey(),
