@@ -13,8 +13,7 @@ import SwitchTheme from "@/components/home/SwitchTheme";
 import {
     Card,
     CardContent,
-    CardHeader,
-    CardFooter
+    CardHeader
 } from "@/components/ui/card";
 
 interface CardWarpperProps {
@@ -47,10 +46,7 @@ export const CardWrapper = ({ children }: CardWarpperProps) => {
                     </div>
                 </div>
             </CardHeader>
-            <CardContent className="px-0">{children}</CardContent>
-            <CardFooter>
-                
-            </CardFooter>
+            <CardContent className="px-0 space-y-4">{children}</CardContent>
         </Card>
     );
 };
