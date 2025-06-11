@@ -2,9 +2,9 @@
 
 //hooks
 import * as z from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef, useState } from "react";
+import { useRef, useState, useTransition } from "react";
 
 //schemas
 import { LoginSchema } from "@/schemas";
@@ -14,14 +14,18 @@ import { cn } from "@/lib/utils";
 import { button } from "@/lib/variants";
 
 //icons
-import { CircleX, ShieldUser, EyeClosed, Eye } from "lucide-react";
+import { CircleX, ShieldUser, EyeOff, Eye, LoaderCircle } from "lucide-react";
 
 //components
 import { CardWrapper as Card } from "@/components/auth/Card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { FormNotif } from "@/components/notification/FormNotif";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
+//server actions
+import { login } from "@/actions/login";
 
 export const LoginForm = () => {
     const form = useForm<z.infer<typeof LoginSchema>>({
@@ -34,12 +38,33 @@ export const LoginForm = () => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
+    const [isPending, startTransition] = useTransition();
+
+    const handleSubmit = (data: z.infer<typeof LoginSchema>) => {
+        startTransition(() => {
+            login(data);
+        });
+    };
+
+    const handleError = (errors: FieldErrors) => {
+        const firstError = Object.keys(errors)[0];
+        switch (firstError) {
+            case "username":
+                usernameRef.current?.focus();
+                break;
+            case "password":
+                passwordRef.current?.focus();
+                break;
+        }
+    };
+
     return (
         <div className="flex h-full items-center justify-center p-4 sm:p-6">
             <Card>
                 <h1 className="font-poppins text-center text-lg font-bold">Sign into your account</h1>
+                <FormNotif message="" type={undefined} />
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(() => {})} className="w-full space-y-6">
+                    <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="w-full space-y-6">
                         <div className="space-y-4">
                             <FormField
                                 control={form.control}
@@ -55,6 +80,7 @@ export const LoginForm = () => {
                                                     placeholder="Username"
                                                     type="text"
                                                     autoComplete="false"
+                                                    disabled={isPending}
                                                     name="username"
                                                     className="peer h-10 rounded-xl ps-9 pe-9 indent-1 text-base font-normal"
                                                 />
@@ -69,7 +95,8 @@ export const LoginForm = () => {
                                                     }),
                                                     field.value
                                                         ? "cursor-pointer opacity-100"
-                                                        : "pointer-events-none opacity-0"
+                                                        : "pointer-events-none opacity-0",
+                                                    isPending && "pointer-events-none opacity-50"
                                                 )}
                                                 aria-label="clear username"
                                                 onClick={() => {
@@ -99,6 +126,7 @@ export const LoginForm = () => {
                                                     placeholder="Password"
                                                     type={showPassword ? "text" : "password"}
                                                     autoComplete="false"
+                                                    disabled={isPending}
                                                     name="password"
                                                     className="peer h-10 rounded-xl ps-9 pe-9 indent-1 text-base font-normal"
                                                 />
@@ -117,7 +145,7 @@ export const LoginForm = () => {
                                                                 }
                                                             }}
                                                         >
-                                                            {showPassword ? <Eye size={25} /> : <EyeClosed size={25} />}
+                                                            {showPassword ? <Eye size={25} /> : <EyeOff size={25} />}
                                                         </a>
                                                     </TooltipTrigger>
                                                     <TooltipContent>
@@ -132,7 +160,8 @@ export const LoginForm = () => {
                                                     }),
                                                     field.value
                                                         ? "cursor-pointer opacity-100"
-                                                        : "pointer-events-none opacity-0"
+                                                        : "pointer-events-none opacity-0",
+                                                    isPending && "pointer-events-none opacity-50"
                                                 )}
                                                 aria-label="clear password"
                                                 onClick={() => {
@@ -148,8 +177,19 @@ export const LoginForm = () => {
                                 )}
                             />
                         </div>
-                        <Button type="submit" className="float-right cursor-pointer text-base font-bold" size="lg">
-                            Sign In
+                        <Button
+                            type="submit"
+                            className="float-right w-full cursor-pointer text-base font-bold sm:w-auto"
+                            size="lg"
+                            disabled={isPending}
+                        >
+                            {isPending ? (
+                                <>
+                                    <LoaderCircle className="-ms-2 animate-spin" strokeWidth={3} /> Loading...
+                                </>
+                            ) : (
+                                "Sign In"
+                            )}
                         </Button>
                     </form>
                 </Form>
