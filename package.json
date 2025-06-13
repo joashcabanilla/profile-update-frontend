@@ -13,6 +13,7 @@
     "drizzle-push": "drizzle-kit push"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.9.1",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-dialog": "^1.1.11",
     "@radix-ui/react-label": "^2.1.4",
@@ -21,6 +22,7 @@
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-switch": "^1.2.2",
     "@radix-ui/react-tooltip": "^1.2.7",
+    "bcrypt": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -28,6 +30,7 @@
     "lucide-react": "^0.503.0",
     "mysql2": "^3.14.1",
     "next": "15.3.1",
+    "next-auth": "5.0.0-beta.28",
     "next-themes": "^0.4.6",
     "react": "^19.1.0",
     "react-day-picker": "9.7.0",
@@ -42,6 +45,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@next/eslint-plugin-next": "^15.3.1",
     "@tailwindcss/postcss": "^4.1.5",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.3",

@@ -24,6 +24,9 @@ import { FormNotif } from "@/components/notification/FormNotif";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
+//types
+import { FormNotification } from "@/types/type";
+
 //server actions
 import { login } from "@/actions/login";
 
@@ -37,12 +40,18 @@ export const LoginForm = () => {
     const passwordRef = useRef<HTMLInputElement>(null);
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [notif, setNotif] = useState<FormNotification>({});
 
     const [isPending, startTransition] = useTransition();
 
     const handleSubmit = (data: z.infer<typeof LoginSchema>) => {
         startTransition(() => {
-            login(data);
+            login(data).then((result) => {
+                setNotif({
+                    type: result.success ? "success" : "error",
+                    message: result.message
+                });
+            });
         });
     };
 
@@ -62,7 +71,7 @@ export const LoginForm = () => {
         <div className="flex h-full items-center justify-center p-4 sm:p-6">
             <Card>
                 <h1 className="font-poppins text-center text-lg font-bold">Sign into your account</h1>
-                <FormNotif message="" type={undefined} />
+                <FormNotif message={notif.message} type={notif.type} />
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="w-full space-y-6">
                         <div className="space-y-4">
