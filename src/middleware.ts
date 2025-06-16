@@ -1,26 +1,25 @@
-import authConfig from "@/auth.config";
-import NextAuth from "next-auth";
-import { NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
+import { NextResponse, NextRequest } from "next/server";
 
 //routes
 import { publicRoutes, authRoutes, apiAuthPrefix, defaultLoginRedirect } from "@/routes";
 
-const { auth } = NextAuth(authConfig);
-export default auth(async function middleware(req) {
+export async function middleware(req: NextRequest) {
     const { nextUrl } = req;
-    const isLoggedIn = req.auth;
-    
+    const token = await getToken({ req });
+    const isLoggedIn = !!token;
+
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-    if(isApiAuthRoute) {
+    if (isApiAuthRoute) {
         // Allow access to API auth routes without authentication
         return NextResponse.next();
     }
 
-    if(isAuthRoute) {
-        if(isLoggedIn) {
+    if (isAuthRoute) {
+        if (isLoggedIn) {
             // If the user is logged in, redirect to the default login redirect path
             return NextResponse.redirect(new URL(defaultLoginRedirect, nextUrl));
         }
@@ -28,11 +27,11 @@ export default auth(async function middleware(req) {
         return NextResponse.next();
     }
 
-    if(!isPublicRoute && !isLoggedIn) {
+    if (!isPublicRoute && !isLoggedIn) {
         // If the user is not logged in and trying to access a protected route, redirect to the login page
         return NextResponse.redirect(new URL("/login", nextUrl));
     }
-});
+}
 
 export const config = {
     matcher: [
