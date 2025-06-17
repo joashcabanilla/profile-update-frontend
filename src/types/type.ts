@@ -65,3 +65,10 @@ export type FormNotification = {
     message?: string;
     type?: "success" | "error" | "warning";
 };
+
+export type updateParameter = {
+    id: string;
+    cpNumber: string;
+    email: string;
+    tinNumber: string | null;
+};

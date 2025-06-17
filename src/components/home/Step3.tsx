@@ -1,14 +1,14 @@
 "use client";
 
 //hooks
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useTransition } from "react";
 
 //style utils and variants
 import { cn } from "@/lib/utils";
 import { text, card, button } from "@/lib/variants";
 
 //icons
-import { CircleX } from "lucide-react";
+import { CircleX, LoaderCircle } from "lucide-react";
 
 //components
 import { Label } from "@/components/ui/label";
@@ -22,6 +22,9 @@ import { useMemberContext } from "@/context/member-context";
 
 //types
 import { Member, updateProfileInput } from "@/types/type";
+
+//actions
+import { update as updateMember } from "@/actions/member";
 
 export default function Step3() {
     const { memberId, searchedMember, setStep, stepCompleted, setStepCompleted } = useMemberContext();
@@ -115,24 +118,23 @@ export default function Step3() {
         ]
     ];
 
+    const [isPending, startTransition] = useTransition();
+
     const handleProfileForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-
-        const payload = {
+        const formData = {
             id: id,
             cpNumber: cpnumberState,
             email: emailState,
             tinNumber: tinState === "" ? null : tinState
         };
 
-        const res = await fetch("/api/member", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+        startTransition(async () => {
+            const result = await updateMember(formData);
+            if(result?.success){
+                setStepCompleted(true);
+            }
         });
-
-        const data = await res.json();
-        if (data.success) setStepCompleted(true);
     };
 
     return stepCompleted ? (
@@ -233,9 +235,16 @@ export default function Step3() {
                         type="button"
                         className="w-full cursor-pointer text-base font-bold"
                         size="lg"
+                        disabled={isPending}
                         onClick={() => profileFormRef.current?.requestSubmit()}
                     >
-                        Save
+                        {isPending ? (
+                            <>
+                                <LoaderCircle className="-ms-2 animate-spin" strokeWidth={3} /> Loading...
+                            </>
+                        ) : (
+                            "Save"
+                        )}
                     </Button>
                     <Button
                         variant="link"

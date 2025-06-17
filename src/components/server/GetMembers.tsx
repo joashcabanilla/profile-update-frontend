@@ -3,7 +3,7 @@ import MainLayoutWrapper from "@/components/home/MainLayoutWrapper";
 //types
 import { Member } from "@/types/type";
 
-import { getAllMembers } from "@/db/models/user";
+import { getAllMembers } from "@/db/models/member";
 
 export default async function GetMembers() {
     const members = await getAllMembers();
