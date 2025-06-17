@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { usersTable, membersTable } from "@/db/schema";
+import { usersTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 interface getUserParams {
     id?: string;
