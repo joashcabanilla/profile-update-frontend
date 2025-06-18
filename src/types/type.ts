@@ -56,11 +56,6 @@ export type updateProfileInput = {
     onClear?: () => void;
 };
 
-export type LoginResult = {
-    success: boolean;
-    message?: string;
-};
-
 export type FormNotification = {
     message?: string;
     type?: "success" | "error" | "warning";

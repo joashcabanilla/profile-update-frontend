@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { usersTable } from "@/db/schema";
+import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 interface getUserParams {
     id?: string;
@@ -13,11 +13,8 @@ export const getUser = async ({ id, username }: getUserParams) => {
     }
 
     user = id
-        ? await db
-              .select()
-              .from(usersTable)
-              .where(eq(usersTable.id, BigInt(id)))
-        : await db.select().from(usersTable).where(eq(usersTable.username, username!));
-
+        ? await db.select().from(users).where(eq(users.id, id))
+        : await db.select().from(users).where(eq(users.username, username!));
+    
     return user;
 };

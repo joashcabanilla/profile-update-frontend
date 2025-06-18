@@ -6,7 +6,7 @@ import { publicRoutes, authRoutes, apiAuthPrefix, defaultLoginRedirect } from "@
 
 export async function middleware(req: NextRequest) {
     const { nextUrl } = req;
-    const token = await getToken({ req });
+    const token = await getToken({ req, secret: process.env.AUTH_SECRET });
     const isLoggedIn = !!token;
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
