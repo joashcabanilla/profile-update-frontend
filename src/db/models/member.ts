@@ -13,7 +13,13 @@ export const getAllMembers = async () => {
 
 export const updateMember = async (data: updateParameter) => {
     const { id, cpNumber, email, tinNumber } = data;
-    return await db
+    
+    const checkDuplicate = await db.select().from(membersTable).where(eq(membersTable.email, email));
+    if(checkDuplicate.length > 0){
+        return {success: false, message: "duplicate email."};
+    }
+    
+    const sqlUpdate = await db
         .update(membersTable)
         .set({
             cpNumber: cpNumber,
@@ -21,4 +27,7 @@ export const updateMember = async (data: updateParameter) => {
             tinNumber: tinNumber
         })
         .where(eq(membersTable.id, BigInt(id)));
+    if(sqlUpdate.length > 0){
+        return { success: true, message: "successfully updated!" };
+    }  
 };

@@ -2,6 +2,7 @@
 
 //hooks
 import React, { useRef, useState, useTransition } from "react";
+import { toast } from "sonner";
 
 //style utils and variants
 import { cn } from "@/lib/utils";
@@ -131,8 +132,12 @@ export default function Step3() {
 
         startTransition(async () => {
             const result = await updateMember(formData);
-            if(result?.success){
+            if (result?.success) {
                 setStepCompleted(true);
+            } else {
+                toast.error("Email already exists.", {
+                    duration: 3000
+                });
             }
         });
     };

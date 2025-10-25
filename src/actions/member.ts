@@ -10,5 +10,5 @@ export const update = async (data: updateParameter) => {
     if (!result) {
         throw new Error("error in updating member information");
     }
-    return { success: true, message: "successfully updated!" };
+    return result;
 };
