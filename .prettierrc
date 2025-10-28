@@ -1,13 +1,14 @@
 {
-    "plugins": ["prettier-plugin-tailwindcss"],
-    "tailwindFunctions": ["tv"],
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ],
     "semi": true,
     "singleQuote": false,
-    "tabWidth": 4,
+    "tabWidth": 2,
     "trailingComma": "none",
     "bracketSpacing": true,
     "proseWrap": "preserve",
-    "printWidth": 120,
+    "printWidth": 100,
     "overrides": [
         {
             "files": "*.json",
