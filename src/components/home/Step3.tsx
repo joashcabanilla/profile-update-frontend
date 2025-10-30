@@ -136,7 +136,7 @@ export default function Step3() {
       tinNumber: tinState === "" ? undefined : tinState,
       birthdate: birthdateInput === "" ? undefined : new Date(birthdateInput)
     };
-    
+
     startTransition(async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL!}/member/updateMember`, {
         method: "POST",
