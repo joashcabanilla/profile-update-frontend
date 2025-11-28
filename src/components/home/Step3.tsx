@@ -30,7 +30,8 @@ import { Member, updateProfileInput } from "@/types/type";
 export default function Step3() {
   const { memberId, searchedMember, setStep, stepCompleted, setStepCompleted } = useMemberContext();
   const profileFormRef = useRef<HTMLFormElement>(null);
-  const [cpnumberRef, emailRef, tinRef, birthdateRef] = [
+  const [cpnumberRef, emailRef, tinRef, birthdateRef, occupationRef] = [
+    useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
@@ -41,6 +42,7 @@ export default function Step3() {
   const [cpnumberState, setCpnumberState] = useState<string>("");
   const [emailState, setEmailState] = useState<string>("");
   const [tinState, setTinState] = useState<string>("");
+  const [occupationState, setOccupationState] = useState<string>("");
   const [calendarOpen, setCalendarOpen] = useState<boolean>(false);
   const [birthdateInput, setBirthdateInput] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
@@ -111,6 +113,18 @@ export default function Step3() {
         clearClass: emailState ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
       },
       {
+        id: "occupation",
+        type: "text",
+        label: "Occupation",
+        disabled: false,
+        ref: occupationRef,
+        value: occupationState,
+        required: false,
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => setOccupationState(e.target.value),
+        onClear: () => setOccupationState(""),
+        clearClass: occupationState ? "cursor-pointer opacity-100" : "pointer-events-none opacity-0"
+      },
+      {
         id: "tin",
         type: "text",
         label: "Tin No.",
@@ -134,7 +148,8 @@ export default function Step3() {
       cpNumber: cpnumberState,
       email: emailState,
       tinNumber: tinState === "" ? undefined : tinState,
-      birthdate: birthdateInput === "" ? undefined : new Date(birthdateInput)
+      birthdate: birthdateInput === "" ? undefined : new Date(birthdateInput),
+      occupation: occupationState === "" ? undefined : occupationState
     };
 
     startTransition(async () => {
